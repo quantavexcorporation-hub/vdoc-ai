@@ -1,5 +1,5 @@
 /**
- * Virtual Economy — client presentation data only.
+ * Virtual Universe — client presentation data only.
  * No API / DB / auth changes. Pure UI layer for the Entertainment OS.
  */
 

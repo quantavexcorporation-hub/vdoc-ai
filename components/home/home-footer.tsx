@@ -24,7 +24,7 @@ export function HomeFooter() {
             Movies
           </a>
           <a href="/economy" className="min-h-10 inline-flex items-center transition-colors hover:text-white/80">
-            Economy
+            Virtual Universe
           </a>
           <a href="/live" className="min-h-10 inline-flex items-center transition-colors hover:text-white/80">
             Live

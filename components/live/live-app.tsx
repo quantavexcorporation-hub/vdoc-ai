@@ -24,7 +24,7 @@ const TOP_NAV = [
   { label: 'Community', href: '/#community' },
   { label: 'Creators', href: '/#creators' },
   { label: 'Live Universe', href: '/live' },
-  { label: 'Virtual Economy', href: '/economy' },
+  { label: 'Virtual Universe', href: '/economy' },
   { label: 'Shorts', href: '/live#quick-entertainment' },
 ]
 

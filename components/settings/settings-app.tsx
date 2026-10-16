@@ -124,7 +124,7 @@ export function SettingsApp() {
           </div>
 
           <div className="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-5">
-            <p className="text-sm font-medium text-white/85">Virtual Economy</p>
+            <p className="text-sm font-medium text-white/85">Virtual Universe</p>
             <p className="mt-2 text-sm text-white/40">
               Ownership and V-Fi remain on their existing routes for everyone.
             </p>
@@ -132,7 +132,7 @@ export function SettingsApp() {
               href="/economy"
               className="mt-3 inline-flex text-sm text-cyan/80 hover:text-cyan"
             >
-              Open Virtual Economy →
+              Open Virtual Universe →
             </Link>
           </div>
         </div>

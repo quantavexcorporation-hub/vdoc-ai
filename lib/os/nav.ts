@@ -60,7 +60,7 @@ export const entertainmentNavGroups: RailGroup[] = [
       {
         id: 'economy',
         icon: Gem,
-        label: 'Virtual Economy',
+        label: 'Virtual Universe',
         href: '/economy',
         hue: 200,
         badge: 'OWN',

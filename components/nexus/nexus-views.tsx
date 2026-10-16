@@ -116,7 +116,7 @@ export function NexusView({
           bullets={[
             'Characters, collectibles, experiences from Studio DNA',
             'Natural extension of creation — not a separate finance app',
-            'Bridge to Virtual Economy (V-Fi) when you are ready',
+            'Bridge to Virtual Universe (V-Fi) when you are ready',
           ]}
           cta="Open V-Fi bridge"
           onCta={() => onNavigate('v-fi')}
@@ -125,16 +125,16 @@ export function NexusView({
     case 'v-fi':
       return (
         <div className="space-y-4">
-          <Panel title="Virtual Economy bridge">
+          <Panel title="Virtual Universe bridge">
             <p className="text-sm text-white/50">
-              Video Genesis keeps creation and ownership connected. Jump into the existing Virtual Economy
+              Video Genesis keeps creation and ownership connected. Jump into the existing Virtual Universe
               without leaving the Vdoc ecosystem.
             </p>
             <Link
               href="/economy"
               className="mt-4 inline-flex items-center gap-2 rounded-xl bg-white px-4 py-2.5 text-sm font-medium text-[#141414]"
             >
-              Open Virtual Economy
+              Open Virtual Universe
               <ArrowUpRight className="size-4" />
             </Link>
           </Panel>

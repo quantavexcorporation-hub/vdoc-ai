@@ -84,7 +84,7 @@ export const INTENT_ACTIONS: IntentAction[] = [
   {
     id: 'economy',
     label: 'Open my digital vault',
-    hint: 'Virtual Economy · ownership universe',
+    hint: 'Virtual Universe · ownership vault',
     href: '/economy',
     keywords: [
       'vault',

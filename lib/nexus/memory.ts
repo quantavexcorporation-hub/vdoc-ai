@@ -118,7 +118,7 @@ export const SEED_IDEAS: IdeaCard[] = [
   {
     id: 'idea-4',
     title: 'Harbor land drop short',
-    angle: '15s vertical teaser for Virtual Economy parcels.',
+    angle: '15s vertical teaser for Virtual Universe parcels.',
     score: 79,
     genre: 'Shorts',
     audience: 'Collectors',

@@ -31,7 +31,7 @@ export function VaultHero() {
       <div className="relative mx-auto w-full max-w-5xl px-6 md:px-10">
         <div className="mb-8 flex flex-wrap items-center gap-4">
           <BrandLogo size="lg" href="/" />
-          <span className="vdoc-status-chip">Virtual Economy</span>
+          <span className="vdoc-status-chip">Virtual Universe</span>
         </div>
 
         <div

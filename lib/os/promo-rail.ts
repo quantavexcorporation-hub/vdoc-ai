@@ -49,7 +49,7 @@ export const FEATURE_SLIDES: FeatureSlide[] = [
   },
   {
     id: 'economy',
-    eyebrow: 'Virtual Economy',
+    eyebrow: 'Virtual Universe',
     headline: 'Ownership is the plot',
     description: 'Collectibles, land, and living assets inside your digital vault.',
     cta: 'Open vault',
@@ -98,7 +98,7 @@ export const AD_SLOTS: AdSlot[] = [
   },
   {
     id: 'vault',
-    sponsor: 'Virtual Economy',
+    sponsor: 'Virtual Universe',
     badge: 'New',
     headline: 'Founders land drop',
     body: 'Early parcels in Neo Harbor — own the block before it rewrites.',

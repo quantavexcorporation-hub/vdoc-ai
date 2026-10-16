@@ -190,7 +190,7 @@ export const NEXUS_VIEW_META: Record<
   },
   'v-fi': {
     title: 'V-Fi',
-    subtitle: 'Bridge to Virtual Economy — ownership as a continuation of craft.',
+    subtitle: 'Bridge to Virtual Universe — ownership as a continuation of craft.',
   },
   settings: {
       title: 'Video Genesis Settings',
