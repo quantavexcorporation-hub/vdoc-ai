@@ -48,23 +48,24 @@ export function VaultHero() {
                 id="vault-title"
                 className="font-display text-[clamp(2.25rem,6vw,4rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-lunar"
               >
-                Not a wallet.
+                Enter the world.
                 <br />
                 <span className="bg-gradient-to-r from-lunar via-cyan to-neon bg-clip-text text-transparent">
-                  A living vault.
+                  Hold the card.
                 </span>
               </h1>
               <p className="mt-5 max-w-md text-pretty ds-body">
-                Ownership is the experience. {VAULT.guardian} guards your civilization of assets —
-                movies, worlds, relics, land, and signal.
+                Virtual Universe is a spatial place — AR over your room, VR you can walk, NFT cards
+                that are not copies of each other, and assets that only live inside the world.{' '}
+                {VAULT.guardian} still guards the vault beneath it.
               </p>
 
               <div className="mt-8 flex flex-wrap gap-3">
                   <DsButton asChild variant="lunar" size="lg">
-                    <a href="#assets">Enter Asset Universe</a>
+                    <a href="#worlds">Enter AR/VR world</a>
                   </DsButton>
                 <DsButton asChild variant="glass" size="lg">
-                  <a href="#marketplace">Open Marketplace</a>
+                  <a href="#cards">View NFT cards</a>
                 </DsButton>
               </div>
             </div>

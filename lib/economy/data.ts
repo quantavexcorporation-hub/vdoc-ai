@@ -434,6 +434,9 @@ export const MARKET_CATEGORIES = [
 ] as const
 
 export const ECONOMY_NAV = [
+  { id: 'worlds', label: 'AR/VR Worlds' },
+  { id: 'cards', label: 'NFT Cards' },
+  { id: 'spatial-assets', label: 'Virtual Assets' },
   { id: 'vault', label: 'AI Vault' },
   { id: 'assets', label: 'Asset Universe' },
   { id: 'collectibles', label: 'Collectibles' },

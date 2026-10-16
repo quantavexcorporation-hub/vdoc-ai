@@ -3,9 +3,9 @@ import { Suspense } from 'react'
 import { EconomyApp } from '@/components/economy/economy-app'
 
 export const metadata: Metadata = {
-  title: 'Virtual Universe — AI Digital Vault',
+  title: 'Virtual Universe — AR/VR worlds, NFT cards, assets',
   description:
-    'The financial layer of the AI Entertainment OS — digital vault, asset universe, collectibles, land, and living ownership.',
+    'A spatial entertainment world: AR overlays, VR chambers, distinct NFT cards, and virtual assets bound to each place.',
 }
 
 export default function EconomyPage() {

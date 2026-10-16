@@ -6,6 +6,7 @@ import { HomeFooter } from '@/components/home/home-footer'
 import { LivingAtmosphere } from '@/components/os/living-atmosphere'
 import { VdocShell } from '@/components/os/vdoc-shell'
 import { VaultHero } from './vault-hero'
+import { SpatialWorld } from './spatial-world'
 import { EconomyModules } from './economy-modules'
 import { ECONOMY_NAV } from '@/lib/economy/data'
 import { cn } from '@/lib/utils'
@@ -47,6 +48,7 @@ export function EconomyApp() {
 
       <main>
         <VaultHero />
+        <SpatialWorld />
         <EconomyModules />
       </main>
 
