@@ -91,9 +91,9 @@ export function LiveNowGrid() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <p className="ds-label mb-3">Live now</p>
-            <h2 id="live-now-title" className="ds-heading-lg text-lunar">
-              Happening across the OS
+            <p className="ds-label mb-3">Open now</p>
+            <h2 id="live-now-title" className="font-display text-[clamp(2rem,4vw,3.4rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-lunar">
+              Rooms on Vyra
             </h2>
           </div>
           <div

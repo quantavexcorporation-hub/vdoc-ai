@@ -48,7 +48,7 @@ export function FeaturedLive() {
       aria-labelledby="featured-live-title"
     >
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-        <p className="ds-label mb-6">Featured experience</p>
+        <p className="ds-label mb-6">Inside the premiere</p>
 
         <article
           className={cn(

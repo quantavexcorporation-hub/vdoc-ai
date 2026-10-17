@@ -21,9 +21,11 @@ export function LiveCategories() {
       aria-labelledby="live-categories-title"
     >
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-        <p className="ds-label mb-3">Modes</p>
-        <h2 id="live-categories-title" className="ds-heading-lg max-w-xl text-lunar">
-          Not streams. Live systems.
+        <p className="ds-label mb-3">Floors</p>
+        <h2 id="live-categories-title" className="font-display text-[clamp(2.2rem,5vw,4.2rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-lunar">
+          Five floors.
+          <br />
+          One current.
         </h2>
         <p className="mt-4 max-w-lg ds-body">
           Each mode is a real-time AI experience — generated live, interactive, and continuous.

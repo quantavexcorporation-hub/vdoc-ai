@@ -35,9 +35,9 @@ export function AiExperiencePanel() {
               <p className="ds-label mb-4">Always on</p>
               <h2
                 id="ai-panel-title"
-                className="font-display text-[clamp(2rem,4vw,3.25rem)] font-semibold leading-[1.05] tracking-[-0.03em] text-lunar"
+                className="font-display text-[clamp(2.2rem,5vw,4rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-lunar"
               >
-                The AI never sleeps
+                Vyra stays awake
               </h2>
               <p className="mt-5 max-w-md ds-body">
                 While you rest, experiences continue. Stories evolve. Worlds keep running.

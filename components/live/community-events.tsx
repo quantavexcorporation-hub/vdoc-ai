@@ -11,9 +11,9 @@ export function CommunityEvents() {
       aria-labelledby="community-live-title"
     >
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-        <p className="ds-label mb-3">Community</p>
-        <h2 id="community-live-title" className="ds-heading-lg max-w-xl text-lunar">
-          Gathered presence
+        <p className="ds-label mb-3">The room</p>
+        <h2 id="community-live-title" className="font-display text-[clamp(2rem,4vw,3.4rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-lunar">
+          Everyone inside Vyra
         </h2>
         <p className="mt-3 max-w-lg ds-body">
           Movie nights, watch parties, Q&A, fan voting, and live challenges — shaped together.
