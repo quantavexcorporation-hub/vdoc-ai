@@ -49,7 +49,7 @@ export const INTENT_ACTIONS: IntentAction[] = [
   {
     id: 'live',
     label: 'What is live right now',
-    hint: 'Enter Live Universe',
+    hint: 'Enter Livewire',
     href: '/live',
     keywords: ['live', 'now', 'happening', 'premiere', 'event', 'stream'],
   },

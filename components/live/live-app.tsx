@@ -23,7 +23,7 @@ const TOP_NAV = [
   { label: 'Stories', href: '/universe?c=stories' },
   { label: 'Community', href: '/#community' },
   { label: 'Creators', href: '/#creators' },
-  { label: 'Live Universe', href: '/live' },
+  { label: 'Livewire', href: '/live' },
   { label: 'Virtual Universe', href: '/economy' },
   { label: 'Shorts', href: '/live#quick-entertainment' },
 ]
@@ -38,7 +38,7 @@ export function LiveApp() {
 
       <nav
         className="sticky top-0 z-30 border-b border-[var(--border)] bg-bg-void/75 backdrop-blur-md"
-        aria-label="Live Universe"
+        aria-label="Livewire"
       >
         <div className="mx-auto flex max-w-[1400px] items-center gap-1 overflow-x-auto px-4 py-2.5 scrollbar-none sm:px-6 md:px-10">
           {TOP_NAV.map((item) => {

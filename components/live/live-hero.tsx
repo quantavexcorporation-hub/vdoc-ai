@@ -25,7 +25,7 @@ export function LiveHero() {
       <div className="relative mx-auto w-full max-w-4xl px-6 md:px-10">
         <div className="animate-rise mb-8 flex flex-wrap items-center gap-4">
           <BrandLogo size="lg" priority href="/" />
-          <LiveBadge label="Live Universe" />
+          <LiveBadge label="Livewire" />
           <span className="vdoc-status-chip">Signal live</span>
         </div>
 
