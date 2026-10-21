@@ -54,7 +54,7 @@ function ConverseShell() {
               {active?.title || 'Converse'}
             </h1>
             <p className="text-[12px] text-muted-foreground">
-              Context-aware · branchable · remembered
+              Guided floor · replies are written here, not by a live model
             </p>
           </div>
         </header>

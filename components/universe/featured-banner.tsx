@@ -1,6 +1,7 @@
 'use client'
 
 import * as React from 'react'
+import { useRouter } from 'next/navigation'
 import { Play } from 'lucide-react'
 import type { CategoryMeta } from '@/lib/universe/data'
 import { DsButton } from '@/components/ds'
@@ -13,6 +14,7 @@ export function FeaturedBanner({
   category: CategoryMeta
   onPlay: () => void
 }) {
+  const router = useRouter()
   const videoRef = React.useRef<HTMLVideoElement>(null)
   const sectionRef = React.useRef<HTMLElement>(null)
   const [ready, setReady] = React.useState(false)
@@ -94,8 +96,19 @@ export function FeaturedBanner({
               <Play className="size-4" fill="currentColor" />
               {category.featured.cta}
             </DsButton>
-            <DsButton type="button" variant="glass" size="lg">
-              Remix with AI
+            <DsButton
+              type="button"
+              variant="glass"
+              size="lg"
+              onClick={() =>
+                router.push(
+                  `/converse?q=${encodeURIComponent(
+                    `Continue ${category.featured.title}. ${category.featured.description}`
+                  )}`
+                )
+              }
+            >
+              Continue in Converse
             </DsButton>
           </div>
         </div>

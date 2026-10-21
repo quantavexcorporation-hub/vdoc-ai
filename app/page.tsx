@@ -3,7 +3,6 @@ import { HomeHero } from '@/components/home/home-hero'
 import { HomeFooter } from '@/components/home/home-footer'
 import { LivingAtmosphere } from '@/components/os/living-atmosphere'
 import { VdocShell } from '@/components/os/vdoc-shell'
-import { PromoTopRail } from '@/components/os/promo-right-rail'
 
 const CommandCenter = lazy(() =>
   import('@/components/os/command-center').then((m) => ({ default: m.CommandCenter }))
@@ -54,8 +53,6 @@ export default function VdocHomePage() {
       </a>
 
       <div className="vdoc-enter-smooth">
-        <PromoTopRail />
-
         <main>
           <HomeHero />
           <BelowFold>

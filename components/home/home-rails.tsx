@@ -82,7 +82,7 @@ export function HomeRails() {
       <ExperienceRail
         id="for-you"
         eyebrow="Personal"
-        title="AI generated for you"
+        title="Picked for this floor"
         items={forYou}
       />
       <ExperienceRail

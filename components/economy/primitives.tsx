@@ -110,16 +110,16 @@ export function CinematicTransfer({
       className="fixed inset-0 z-[80] flex items-center justify-center bg-bg-void/80 backdrop-blur-md"
       role="alertdialog"
       aria-modal
-      aria-label="Ownership transfer"
+      aria-label="Preview seal"
     >
       <div className="vydo-tx-stage relative mx-6 max-w-md overflow-hidden rounded-[var(--radius-2xl)] border border-cyan/25 p-10 text-center shadow-[var(--shadow-glow-cyan)]">
         <div className="vydo-tx-particles" aria-hidden />
-        <p className="ds-label mb-3 text-cyan">Ownership sealed</p>
+        <p className="ds-label mb-3 text-cyan">Preview only</p>
         <h3 className="font-display text-2xl font-semibold tracking-tight text-lunar md:text-3xl">
           {title}
         </h3>
         <p className="mt-4 text-sm text-muted-foreground">
-          Lumen congratulates you. Asset entering AI Digital Vault…
+          Nothing was purchased or owned. This vault is a preview of the floor.
         </p>
         <div className="mx-auto mt-8 h-1 w-40 overflow-hidden rounded-full bg-white/10">
           <div className="vydo-tx-bar h-full rounded-full bg-cyan" />

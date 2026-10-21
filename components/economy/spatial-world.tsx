@@ -66,7 +66,7 @@ export function SpatialWorld() {
         <div className="mb-5 flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
           <div className="min-w-0">
             <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/35">
-              Spatial layer
+              Spatial layer · Preview
             </p>
             <h2
               id="spatial-title"

@@ -59,6 +59,9 @@ export function MediaCard({ media }: { media: MediaPayload }) {
         <p className="font-display text-base font-medium tracking-tight text-lunar">
           {media.title}
         </p>
+        <p className="text-xs text-muted-foreground">
+          Guided sketch. No image or video file was created.
+        </p>
         {media.scenes && (
           <ol className="grid gap-2 sm:grid-cols-2">
             {media.scenes.map((s, i) => (

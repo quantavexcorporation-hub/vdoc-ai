@@ -23,6 +23,10 @@ export type MediaItem = {
   genre: string
   author?: string
   rating?: number
+  /** Public sample file. Absent titles are stills. */
+  video?: string
+  /** Opens the signature choice story instead of a player. */
+  story?: boolean
 }
 
 export type CategoryMeta = {
@@ -83,7 +87,7 @@ export const CATEGORIES: CategoryMeta[] = [
         'A noir city that remembers every ending you abandoned. Tonight the harbor is rewriting itself around your cursor.',
       image: frame(280),
       video:
-        'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+        '/media/flower.mp4',
       liveLabel: 'Premiere',
       cta: 'Play instantly',
     },
@@ -100,7 +104,7 @@ export const CATEGORIES: CategoryMeta[] = [
         'Eight voices. One frequency. Each episode adapts to who is listening in the room.',
       image: frame(230),
       video:
-        'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+        '/media/flower.mp4',
       liveLabel: 'Episode drop',
       cta: 'Start episode',
     },
@@ -117,7 +121,7 @@ export const CATEGORIES: CategoryMeta[] = [
         'A competitive realm where tracks generate under your tires and rivals learn your tells.',
       image: frame(200),
       video:
-        'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+        '/media/flower.mp4',
       liveLabel: 'Matchmaking',
       cta: 'Enter match',
     },
@@ -164,7 +168,7 @@ export const CATEGORIES: CategoryMeta[] = [
         'A twelve-second metamorphosis loop that never lands the same way twice.',
       image: frame(25),
       video:
-        'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+        '/media/flower.mp4',
       liveLabel: 'Loop',
       cta: 'Play short',
     },
@@ -196,7 +200,7 @@ export const CATEGORIES: CategoryMeta[] = [
         'Streets rearrange. Stories collide. Your presence is the plot — and the skyline knows your name.',
       image: frame(210),
       video:
-        'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
+        '/media/flower.mp4',
       liveLabel: 'World open',
       cta: 'Enter world',
     },
@@ -306,18 +310,25 @@ export function buildCatalog(category: UniverseCategory, count = 48): MediaItem[
     const seed = hash(`${category}-${i}-${title}`)
     const genre = meta.genres[seed % meta.genres.length]
     const hue = (baseHue + (seed % 80) - 20 + 360) % 360
+    const signature = category === 'stories' && i === 0
+    const video = !signature && i === 0 ? meta.featured.video : undefined
     items.push({
       id: `${category}-${i}`,
-      title: i < titles.length ? title : `${title} ${Math.floor(i / titles.length) + 1}`,
-      subtitle:
-        category === 'games'
-          ? `${genre} · Instant play`
-          : category === 'music'
-            ? `${genre} · Adaptive`
-            : `${genre} · AI generated`,
+      title: signature
+        ? 'The Listening Forest'
+        : i < titles.length
+          ? title
+          : `${title} ${Math.floor(i / titles.length) + 1}`,
+      subtitle: signature
+        ? 'Choose a path · four endings'
+        : video
+          ? `${genre} · Sample picture`
+          : `${genre} · On the shelf`,
       category,
       image: '',
       hue,
+      video,
+      story: signature || undefined,
       duration:
         category === 'shorts'
           ? `0:${String(12 + (seed % 40)).padStart(2, '0')}`

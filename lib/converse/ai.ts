@@ -140,13 +140,13 @@ export function buildResponse(
       : ''
 
   if (mode === 'image') {
-    return `Composed a still from your brief.${memLine}\n\nUse the canvas below — regenerate anytime, or refine with more light, lens, or mood.`
+    return `Sketched a still from your brief. This is a guided preview, not a generated file.${memLine}\n\nThe canvas below is atmosphere only. Ask for a story if you want choices you can finish.`
   }
   if (mode === 'video') {
-    return `Cut a short motion sequence.${memLine}\n\nScrub the timeline to preview beats. Ask for a longer cut or a different camera grammar.`
+    return `Laid out a short motion sketch. No video file was rendered.${memLine}\n\nThe beats below are a plan. Ask for an interactive story if you want something you can finish.`
   }
   if (mode === 'movie') {
-    return `Assembled a miniature film structure — acts, score cues, and a closing card.${memLine}\n\nBranch the plot, swap the ending, or expand any act into a scene.`
+    return `Outlined a miniature film. No picture was filmed.${memLine}\n\nThe acts below are a structure. Say “interactive story” if you want choices and an ending.`
   }
   if (mode === 'story') {
     return `Opened an interactive thread.${memLine}\n\nChoose a path. Each fork stays in your conversation tree — you can rewind and rebranch.`

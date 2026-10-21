@@ -67,7 +67,7 @@ export function LiveHero() {
             </p>
             <p className="mt-1 max-w-lg text-sm text-white/60">{FEATURED_LIVE.description}</p>
             <p className="mt-2 text-xs text-white/45">
-              {FEATURED_LIVE.host} · {FEATURED_LIVE.viewers} inside
+              {FEATURED_LIVE.host} · {FEATURED_LIVE.viewers} staged, not a live count
             </p>
           </div>
           <div className="flex shrink-0 flex-wrap gap-2">

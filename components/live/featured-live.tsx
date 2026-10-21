@@ -89,7 +89,7 @@ export function FeaturedLive() {
                 <LiveBadge />
                 <span className="inline-flex items-center gap-1.5 text-[12px] text-muted-foreground">
                   <Radio className="size-3 text-cyan" aria-hidden />
-                  {FEATURED_LIVE.viewers} present · {elapsed}
+                  {FEATURED_LIVE.viewers} staged · {elapsed}
                 </span>
               </div>
 

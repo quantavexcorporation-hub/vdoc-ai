@@ -89,7 +89,7 @@ export const FEATURED_LIVE: LiveEvent = {
   tags: ['Premiere', 'World', 'Interactive'],
   hue: 210,
   status: 'live',
-  video: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+  video: '/media/flower.mp4',
 }
 
 export const LIVE_NOW: LiveEvent[] = [
@@ -300,7 +300,7 @@ export const QUICK_SHORTS: QuickShort[] = [
     tag: 'Metamorphosis',
     duration: '0:12',
     hue: 25,
-    video: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4',
+    video: '/media/flower.mp4',
   },
   {
     id: 'qs-2',
@@ -308,7 +308,7 @@ export const QUICK_SHORTS: QuickShort[] = [
     tag: 'VFX',
     duration: '0:18',
     hue: 280,
-    video: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4',
+    video: '/media/flower.mp4',
   },
   {
     id: 'qs-3',
@@ -316,7 +316,7 @@ export const QUICK_SHORTS: QuickShort[] = [
     tag: 'World',
     duration: '0:24',
     hue: 210,
-    video: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4',
+    video: '/media/flower.mp4',
   },
   {
     id: 'qs-4',
@@ -324,7 +324,7 @@ export const QUICK_SHORTS: QuickShort[] = [
     tag: 'Music',
     duration: '0:31',
     hue: 175,
-    video: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4',
+    video: '/media/flower.mp4',
   },
   {
     id: 'qs-5',
@@ -332,7 +332,7 @@ export const QUICK_SHORTS: QuickShort[] = [
     tag: 'Story',
     duration: '0:15',
     hue: 320,
-    video: 'https://storage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4',
+    video: '/media/flower.mp4',
   },
   {
     id: 'qs-6',

@@ -28,6 +28,7 @@ import { LiveStatus } from './live-status'
 import { ContentRail } from './content-rail'
 import { InfiniteGrid } from './infinite-grid'
 import { InstantPlayer } from './instant-player'
+import { ListeningForest } from './listening-forest'
 import { LivingAtmosphere } from '@/components/os/living-atmosphere'
 import { CATEGORY_MOOD } from '@/lib/os/intent'
 import { cn } from '@/lib/utils'
@@ -60,6 +61,7 @@ export function UniverseApp() {
   const [genre, setGenre] = React.useState<string | null>(null)
   const [page, setPage] = React.useState(1)
   const [playing, setPlaying] = React.useState<MediaItem | null>(null)
+  const [forest, setForest] = React.useState(false)
 
   const category = CATEGORIES.find((c) => c.id === categoryId)!
 
@@ -89,6 +91,10 @@ export function UniverseApp() {
   }, [categoryId])
 
   const onPlay = React.useCallback((item: MediaItem) => {
+    if (item.story) {
+      setForest(true)
+      return
+    }
     setPlaying(item)
   }, [])
 
@@ -155,16 +161,21 @@ export function UniverseApp() {
         <main className="ix-scroll relative mx-auto max-w-[1400px] space-y-14 overflow-x-hidden px-4 py-8 sm:px-6 md:py-10">
           <FeaturedBanner
             category={category}
-            onPlay={() =>
+            onPlay={() => {
+              if (category.id === 'stories') {
+                setForest(true)
+                return
+              }
               onPlay({
                 id: `featured-${category.id}`,
                 title: category.featured.title,
-                subtitle: category.label,
+                subtitle: category.featured.video ? 'Sample picture' : category.label,
                 category: category.id,
                 image: category.featured.image,
                 genre: category.genres[0],
+                video: category.featured.video,
               })
-            }
+            }}
           />
 
           <div className="flex flex-col gap-6 sm:flex-row sm:items-center sm:justify-between">
@@ -199,8 +210,8 @@ export function UniverseApp() {
           />
 
           <ContentRail
-            eyebrow="Just rendered"
-            title="Recently Generated"
+            eyebrow="On the shelf"
+            title="Also here"
             items={rails.recent}
             onPlay={onPlay}
           />
@@ -229,6 +240,7 @@ export function UniverseApp() {
         </main>
 
       <InstantPlayer item={playing} onClose={() => setPlaying(null)} />
+      <ListeningForest open={forest} onClose={() => setForest(false)} />
     </VdocShell>
   )
 }

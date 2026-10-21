@@ -92,7 +92,7 @@ function AssetCard({
           )}
         </p>
         <p className="mt-2 text-[11px] text-muted-foreground">
-          Owners {asset.owners.toLocaleString()} · Acquired {asset.acquired}
+          Preview card · not a purchase
         </p>
         <ol className="mt-2 space-y-1 border-l border-cyan/20 pl-3 text-[11px] text-muted-foreground">
           {asset.history.map((h) => (
@@ -106,7 +106,7 @@ function AssetCard({
             className="mt-3"
             onClick={() => onAcquire(asset.title)}
           >
-            Seal to Vault
+            Preview in vault
           </DsButton>
         ) : null}
       </div>
@@ -550,8 +550,8 @@ export function EconomyModules() {
         <div className="mx-auto max-w-[1400px] px-6 md:px-10">
           <SectionHead
             id="social-title"
-            eyebrow="Social Ownership"
-            title="Collectors, galleries, gifts."
+            eyebrow="Collector preview"
+            title="Galleries on the floor."
           />
           <div className="grid gap-4 md:grid-cols-3">
             {SOCIAL_SHOWCASES.map((s) => (
