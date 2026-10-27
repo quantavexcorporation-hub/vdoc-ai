@@ -82,6 +82,13 @@ export const INTENT_ACTIONS: IntentAction[] = [
     keywords: ['world', 'worlds', 'city', 'cities', 'universe', 'explore', 'enter', 'virtual'],
   },
   {
+    id: 'upgrade',
+    label: 'Upgrade my floor',
+    hint: 'Plans and modules',
+    href: '/upgrade',
+    keywords: ['upgrade', 'plus', 'plan', 'pro', 'premiere', 'subscribe', 'pay', 'premium'],
+  },
+  {
     id: 'economy',
     label: 'Open my digital vault',
     hint: 'Virtual Universe · ownership vault',

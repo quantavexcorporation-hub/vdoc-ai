@@ -25,6 +25,7 @@ import {
   ListChecks,
   Calendar,
   Aperture,
+  Settings,
   type LucideIcon,
 } from 'lucide-react'
 import type { UniverseCategory } from '@/lib/universe/data'
@@ -368,6 +369,30 @@ export const entertainmentNavGroups: RailGroup[] = [
         pulse: true,
         match: ({ pathname }) =>
           pathname === '/video-genesis' || pathname.startsWith('/video-genesis'),
+      },
+    ],
+  },
+  {
+    id: 'account',
+    label: 'Account',
+    items: [
+      {
+        id: 'settings',
+        icon: Settings,
+        label: 'Settings',
+        href: '/settings',
+        hue: 220,
+        match: ({ pathname }) => pathname === '/settings' || pathname.startsWith('/settings/'),
+      },
+      {
+        id: 'upgrade',
+        icon: Sparkles,
+        label: 'Upgrade',
+        href: '/upgrade',
+        hue: 45,
+        badge: 'PLUS',
+        pulse: true,
+        match: ({ pathname }) => pathname === '/upgrade',
       },
     ],
   },
