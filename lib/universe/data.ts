@@ -5,7 +5,7 @@ export type UniverseCategory =
   | 'stories'
   | 'comics'
   | 'shorts'
-  | 'shows'
+  | 'novels'
   | 'worlds'
 
 export type MediaItem = {
@@ -72,7 +72,7 @@ const HUE: Record<UniverseCategory, number> = {
   stories: 155,
   comics: 320,
   shorts: 25,
-  shows: 18,
+  novels: 18,
   worlds: 210,
 }
 
@@ -176,19 +176,19 @@ export const CATEGORIES: CategoryMeta[] = [
     status: { generating: 5021, online: '5.2M', queue: '22ms' },
   },
   {
-    id: 'shows',
-    label: 'Shows',
-    tagline: 'Desks, rooms, and nights that stay on air',
+    id: 'novels',
+    label: 'Novels',
+    tagline: 'Long-form rooms you can stay inside',
     featured: {
       title: 'Night Circuit',
       description:
-        'A late-night floor that rebuilds the desk around whoever is in the room. The audience is the plot.',
+        'A novel that rebuilds the city around whoever is still reading at 3am. The next chapter is the plot.',
       image: frame(18),
       video: '/media/flower.mp4',
-      liveLabel: 'On air',
-      cta: 'Watch now',
+      liveLabel: 'Open',
+      cta: 'Read now',
     },
-    genres: ['Talk', 'Variety', 'Reality', 'Late night', 'Sketch', 'Game show'],
+    genres: ['Literary', 'Mystery', 'Romance', 'Speculative', 'Noir', 'Serial'],
     status: { generating: 733, online: '1.1M', queue: '33ms' },
   },
   {
@@ -273,15 +273,15 @@ const TITLES: Record<UniverseCategory, string[]> = {
     'One Breath',
     'Vertical Myth',
   ],
-  shows: [
+  novels: [
     'Night Circuit',
     'Harbor Desk',
-    'Afterlight After Hours',
+    'Afterlight',
     'The Soft Vote',
     'Studio Seven',
-    'Rain District Live',
+    'Rain District',
     'Mirror Room',
-    'Signal Choir Stage',
+    'Signal Choir',
   ],
   worlds: [
     'Orbital Quiet',
@@ -333,8 +333,8 @@ export function buildCatalog(category: UniverseCategory, count = 48): MediaItem[
       duration:
         category === 'shorts'
           ? `0:${String(12 + (seed % 40)).padStart(2, '0')}`
-          : category === 'shows'
-            ? `${22 + (seed % 37)} min`
+          : category === 'novels'
+            ? `${12 + (seed % 28)} ch`
             : category === 'movies'
               ? `${90 + (seed % 40)} min`
               : undefined,

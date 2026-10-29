@@ -5,7 +5,7 @@ import { UniverseApp } from '@/components/universe/universe-app'
 export const metadata: Metadata = {
   title: 'Universe — VDOC',
   description:
-    'Enter the AI Entertainment Universe — movies, series, games, stories, comics, shorts, shows, and virtual worlds.',
+    'Enter the AI Entertainment Universe — movies, series, games, stories, comics, shorts, novels, and virtual worlds.',
 }
 
 export default function UniversePage() {

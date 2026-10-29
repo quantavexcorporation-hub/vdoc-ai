@@ -16,7 +16,7 @@ const STARTERS = [
   'What should I watch tonight?',
   'Open a quiet story',
   'Find something live',
-  'Put on a show',
+  'Open a novel',
 ]
 
 function uid() {

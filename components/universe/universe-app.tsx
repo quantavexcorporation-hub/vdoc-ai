@@ -8,7 +8,7 @@ import {
   Clapperboard,
   Gamepad2,
   Globe,
-  Tv,
+  BookText,
   MessageSquare,
   BookMarked,
   Film,
@@ -40,7 +40,7 @@ const ICONS: Record<UniverseCategory, LucideIcon> = {
   stories: BookOpen,
   comics: BookMarked,
   shorts: Sparkles,
-  shows: Tv,
+  novels: BookText,
   worlds: Globe,
 }
 
@@ -49,7 +49,7 @@ const VALID = new Set<UniverseCategory>(
 )
 
 function resolveCategory(raw: string | null): UniverseCategory {
-  if (raw === 'music') return 'shows'
+  if (raw === 'music' || raw === 'shows') return 'novels'
   if (raw && VALID.has(raw as UniverseCategory)) return raw as UniverseCategory
   return 'movies'
 }

@@ -4,7 +4,7 @@ import {
   Gamepad2,
   BookOpen,
   BookMarked,
-  Tv,
+  BookText,
   Globe,
   Zap,
   Sparkles,
@@ -99,14 +99,16 @@ export const entertainmentNavGroups: RailGroup[] = [
           pathname === '/universe' && category === 'comics',
       },
       {
-        id: 'shows',
-        icon: Tv,
-        label: 'Shows',
-        href: '/universe?c=shows',
+        id: 'novels',
+        icon: BookText,
+        label: 'Novels',
+        href: '/universe?c=novels',
         hue: 18,
         match: ({ pathname, category }) =>
           pathname === '/universe' &&
-          (category === 'shows' || (category as string) === 'music'),
+          (category === 'novels' ||
+            (category as string) === 'shows' ||
+            (category as string) === 'music'),
       },
     ],
   },

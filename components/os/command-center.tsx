@@ -106,7 +106,7 @@ const PANELS: Panel[] = [
     eyebrow: 'Memory Highlights',
     title: 'Harbor Desk',
     insight: 'You returned here three times.',
-    href: '/universe?c=shows',
+    href: '/universe?c=novels',
     icon: MemoryStick,
   },
 ]

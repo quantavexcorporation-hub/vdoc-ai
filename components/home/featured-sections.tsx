@@ -118,7 +118,7 @@ export function CreatorSpotlight() {
                 </p>
                 <div className="mt-8">
                   <DsButton asChild variant="glass" size="md">
-                    <Link href="/universe?c=shows">Explore her shows</Link>
+                    <Link href="/universe?c=novels">Explore her novels</Link>
                   </DsButton>
                 </div>
               </div>
