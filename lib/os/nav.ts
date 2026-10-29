@@ -150,44 +150,6 @@ export const entertainmentNavGroups: RailGroup[] = [
     ],
   },
   {
-    id: 'create',
-    label: 'Create',
-    items: [
-      {
-        id: 'creator',
-        icon: Wand2,
-        label: 'AI Creator',
-        href: '/converse',
-        hue: 265,
-        badge: 'MAKE',
-      },
-      {
-        id: 'creators',
-        icon: Radio,
-        label: 'Creator Spotlight',
-        href: '/#creators',
-        hue: 280,
-        match: ({ pathname, hash }) => pathname === '/' && hash === 'creators',
-      },
-      {
-        id: 'voice',
-        icon: Mic2,
-        label: 'Voice Converse',
-        href: '/converse',
-        hue: 175,
-      },
-      {
-        id: 'quick',
-        icon: Sparkles,
-        label: 'Quick Entertain',
-        href: '/#quick-entertainment',
-        hue: 25,
-        match: ({ pathname, hash }) =>
-          pathname === '/' && hash === 'quick-entertainment',
-      },
-    ],
-  },
-  {
     id: 'intelligence',
     label: 'Intelligence',
     items: [
@@ -325,6 +287,44 @@ export const entertainmentNavGroups: RailGroup[] = [
         badge: 'PREVIEW',
         match: ({ pathname, hash }) =>
           pathname === '/' && hash === 'teaser-trailer',
+      },
+    ],
+  },
+  {
+    id: 'create',
+    label: 'Create',
+    items: [
+      {
+        id: 'creator',
+        icon: Wand2,
+        label: 'AI Creator',
+        href: '/converse',
+        hue: 265,
+        badge: 'MAKE',
+      },
+      {
+        id: 'creators',
+        icon: Radio,
+        label: 'Creator Spotlight',
+        href: '/#creators',
+        hue: 280,
+        match: ({ pathname, hash }) => pathname === '/' && hash === 'creators',
+      },
+      {
+        id: 'voice',
+        icon: Mic2,
+        label: 'Voice Converse',
+        href: '/converse',
+        hue: 175,
+      },
+      {
+        id: 'quick',
+        icon: Sparkles,
+        label: 'Quick Entertain',
+        href: '/#quick-entertainment',
+        hue: 25,
+        match: ({ pathname, hash }) =>
+          pathname === '/' && hash === 'quick-entertainment',
       },
     ],
   },
