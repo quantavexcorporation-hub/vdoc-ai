@@ -50,41 +50,6 @@ export type RailGroup = {
 /** VDOC rail — futuristic OS surfaces mapped to real routes/anchors */
 export const entertainmentNavGroups: RailGroup[] = [
   {
-    id: 'vault',
-    label: 'Virtual Worlds',
-    items: [
-      {
-        id: 'economy',
-        icon: Gem,
-        label: 'Virtual Universe',
-        href: '/economy',
-        hue: 200,
-        badge: 'OWN',
-        match: ({ pathname }) => pathname === '/economy',
-      },
-      {
-        id: 'worlds',
-        icon: Globe,
-        label: 'Virtual Cities',
-        href: '/universe?c=worlds',
-        hue: 255,
-        badge: 'ENTER',
-        match: ({ pathname, category }) =>
-          pathname === '/universe' && category === 'worlds',
-      },
-      {
-        id: 'live',
-        icon: Zap,
-        label: 'PLAYVERSE',
-        href: '/live',
-        hue: 210,
-        badge: 'LIVE',
-        pulse: true,
-        match: ({ pathname }) => pathname === '/live',
-      },
-    ],
-  },
-  {
     id: 'universe',
     label: 'Core',
     items: [
@@ -273,6 +238,41 @@ export const entertainmentNavGroups: RailGroup[] = [
         hue: 25,
         match: ({ pathname, hash }) =>
           pathname === '/' && hash === 'quick-entertainment',
+      },
+    ],
+  },
+  {
+    id: 'vault',
+    label: 'Virtual Worlds',
+    items: [
+      {
+        id: 'economy',
+        icon: Gem,
+        label: 'Virtual Universe',
+        href: '/economy',
+        hue: 200,
+        badge: 'OWN',
+        match: ({ pathname }) => pathname === '/economy',
+      },
+      {
+        id: 'worlds',
+        icon: Globe,
+        label: 'Virtual Cities',
+        href: '/universe?c=worlds',
+        hue: 255,
+        badge: 'ENTER',
+        match: ({ pathname, category }) =>
+          pathname === '/universe' && category === 'worlds',
+      },
+      {
+        id: 'live',
+        icon: Zap,
+        label: 'PLAYVERSE',
+        href: '/live',
+        hue: 210,
+        badge: 'LIVE',
+        pulse: true,
+        match: ({ pathname }) => pathname === '/live',
       },
     ],
   },
