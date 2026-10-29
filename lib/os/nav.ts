@@ -163,14 +163,12 @@ export const entertainmentNavGroups: RailGroup[] = [
         badge: 'MAKE',
       },
       {
-        id: 'instant',
-        icon: Sparkles,
-        label: 'Instant Generate',
-        href:
-          '/converse?q=' +
-          encodeURIComponent('Generate something new for me right now'),
-        hue: 45,
-        pulse: true,
+        id: 'creators',
+        icon: Radio,
+        label: 'Creator Spotlight',
+        href: '/#creators',
+        hue: 280,
+        match: ({ pathname, hash }) => pathname === '/' && hash === 'creators',
       },
       {
         id: 'voice',
@@ -342,14 +340,6 @@ export const entertainmentNavGroups: RailGroup[] = [
         href: '/#community',
         hue: 190,
         match: ({ pathname, hash }) => pathname === '/' && hash === 'community',
-      },
-      {
-        id: 'creators',
-        icon: Radio,
-        label: 'Creator Spotlight',
-        href: '/#creators',
-        hue: 280,
-        match: ({ pathname, hash }) => pathname === '/' && hash === 'creators',
       },
       {
         id: 'video-genesis',
