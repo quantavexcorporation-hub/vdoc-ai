@@ -14,12 +14,9 @@ import {
   TrendingUp,
   Radio,
   Mic2,
-  Layers,
   Heart,
   Star,
   Play,
-  Fingerprint,
-  Sunset,
   Moon,
   ListChecks,
   Calendar,
@@ -93,6 +90,16 @@ export const entertainmentNavGroups: RailGroup[] = [
     label: 'Core',
     items: [
       {
+        id: 'assistant',
+        icon: Brain,
+        label: 'AI Assistant',
+        href: '/converse',
+        hue: 265,
+        badge: 'AI',
+        pulse: true,
+        match: ({ pathname }) => pathname === '/converse',
+      },
+      {
         id: 'movies',
         icon: Clapperboard,
         label: 'Movies',
@@ -154,16 +161,6 @@ export const entertainmentNavGroups: RailGroup[] = [
     label: 'Intelligence',
     items: [
       {
-        id: 'assistant',
-        icon: Brain,
-        label: 'AI Assistant',
-        href: '/converse',
-        hue: 265,
-        badge: 'AI',
-        pulse: true,
-        match: ({ pathname }) => pathname === '/converse',
-      },
-      {
         id: 'mood-match',
         icon: Heart,
         label: 'Mood Match',
@@ -204,26 +201,6 @@ export const entertainmentNavGroups: RailGroup[] = [
           pathname === '/intelligence' && hash === 'favourite-upcoming',
       },
       {
-        id: 'taste-mirror',
-        icon: Fingerprint,
-        label: 'Taste Mirror',
-        href: '/intelligence#taste-mirror',
-        hue: 280,
-        badge: 'WHY',
-        match: ({ pathname, hash }) =>
-          pathname === '/intelligence' && hash === 'taste-mirror',
-      },
-      {
-        id: 'afterglow',
-        icon: Sunset,
-        label: 'Afterglow',
-        href: '/intelligence#afterglow',
-        hue: 25,
-        badge: 'LAND',
-        match: ({ pathname, hash }) =>
-          pathname === '/intelligence' && hash === 'afterglow',
-      },
-      {
         id: 'evening-intent',
         icon: Moon,
         label: 'Evening Intent',
@@ -242,16 +219,6 @@ export const entertainmentNavGroups: RailGroup[] = [
         badge: 'CLEAR',
         match: ({ pathname, hash }) =>
           pathname === '/intelligence' && hash === 'unfinished',
-      },
-      {
-        id: 'thread-continuity',
-        icon: Layers,
-        label: 'World Thread',
-        href: '/intelligence#thread-continuity',
-        hue: 255,
-        badge: 'LIVE',
-        match: ({ pathname, hash }) =>
-          pathname === '/intelligence' && hash === 'thread-continuity',
       },
     ],
   },
