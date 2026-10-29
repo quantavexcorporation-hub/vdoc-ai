@@ -23,6 +23,7 @@ import {
   Moon,
   ListChecks,
   Calendar,
+  Aperture,
   Settings,
   type LucideIcon,
 } from 'lucide-react'
@@ -331,6 +332,17 @@ export const entertainmentNavGroups: RailGroup[] = [
     id: 'account',
     label: 'Account',
     items: [
+      {
+        id: 'video-genesis',
+        icon: Aperture,
+        label: 'Video Genesis',
+        href: '/video-genesis',
+        hue: 190,
+        badge: 'STUDIO',
+        pulse: true,
+        match: ({ pathname }) =>
+          pathname === '/video-genesis' || pathname.startsWith('/video-genesis'),
+      },
       {
         id: 'settings',
         icon: Settings,
