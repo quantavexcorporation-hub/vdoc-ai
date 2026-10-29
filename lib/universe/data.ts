@@ -5,7 +5,7 @@ export type UniverseCategory =
   | 'stories'
   | 'comics'
   | 'shorts'
-  | 'music'
+  | 'shows'
   | 'worlds'
 
 export type MediaItem = {
@@ -72,7 +72,7 @@ const HUE: Record<UniverseCategory, number> = {
   stories: 155,
   comics: 320,
   shorts: 25,
-  music: 175,
+  shows: 18,
   worlds: 210,
 }
 
@@ -176,18 +176,19 @@ export const CATEGORIES: CategoryMeta[] = [
     status: { generating: 5021, online: '5.2M', queue: '22ms' },
   },
   {
-    id: 'music',
-    label: 'Music',
-    tagline: 'Scores that follow your pulse',
+    id: 'shows',
+    label: 'Shows',
+    tagline: 'Desks, rooms, and nights that stay on air',
     featured: {
-      title: 'Orbital Quiet',
+      title: 'Night Circuit',
       description:
-        'An adaptive score that thins when you breathe slower and blooms when the room gets loud.',
-      image: frame(175),
-      liveLabel: 'Listening room',
-      cta: 'Listen live',
+        'A late-night floor that rebuilds the desk around whoever is in the room. The audience is the plot.',
+      image: frame(18),
+      video: '/media/flower.mp4',
+      liveLabel: 'On air',
+      cta: 'Watch now',
     },
-    genres: ['Ambient', 'Synth', 'Score', 'Vocal', 'Glitch'],
+    genres: ['Talk', 'Variety', 'Reality', 'Late night', 'Sketch', 'Game show'],
     status: { generating: 733, online: '1.1M', queue: '33ms' },
   },
   {
@@ -272,15 +273,15 @@ const TITLES: Record<UniverseCategory, string[]> = {
     'One Breath',
     'Vertical Myth',
   ],
-  music: [
-    'Filament Score',
-    'Soft Engine',
-    'Chorus Void',
-    'Pulse Quilt',
-    'Amber Delay',
-    'Skyline Hum',
-    'Glass Percussion',
-    'Night Bandwidth',
+  shows: [
+    'Night Circuit',
+    'Harbor Desk',
+    'Afterlight After Hours',
+    'The Soft Vote',
+    'Studio Seven',
+    'Rain District Live',
+    'Mirror Room',
+    'Signal Choir Stage',
   ],
   worlds: [
     'Orbital Quiet',
@@ -332,8 +333,8 @@ export function buildCatalog(category: UniverseCategory, count = 48): MediaItem[
       duration:
         category === 'shorts'
           ? `0:${String(12 + (seed % 40)).padStart(2, '0')}`
-          : category === 'music'
-            ? `${3 + (seed % 5)}:${String(seed % 60).padStart(2, '0')}`
+          : category === 'shows'
+            ? `${22 + (seed % 37)} min`
             : category === 'movies'
               ? `${90 + (seed % 40)} min`
               : undefined,

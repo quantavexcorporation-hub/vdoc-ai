@@ -104,9 +104,9 @@ const PANELS: Panel[] = [
   {
     id: 'memory',
     eyebrow: 'Memory Highlights',
-    title: 'Soft Score Session',
+    title: 'Harbor Desk',
     insight: 'You returned here three times.',
-    href: '/universe?c=music',
+    href: '/universe?c=shows',
     icon: MemoryStick,
   },
 ]

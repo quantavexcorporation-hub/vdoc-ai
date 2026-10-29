@@ -114,12 +114,11 @@ export function CreatorSpotlight() {
                   Nova Ellison
                 </h2>
                 <p className="mt-4 ds-body">
-                  Building quiet worlds where sound is the interface — and every listener
-                  becomes a co-author.
+                  Building rooms that stay on air — and every viewer becomes a co-author.
                 </p>
                 <div className="mt-8">
                   <DsButton asChild variant="glass" size="md">
-                    <Link href="/universe?c=music">Explore her worlds</Link>
+                    <Link href="/universe?c=shows">Explore her shows</Link>
                   </DsButton>
                 </div>
               </div>

@@ -5,7 +5,7 @@ const trending: RailItem[] = [
   { id: 't2', title: 'Glass Empire', meta: 'Trending · Game', hue: 200, href: '/universe?c=games' },
   { id: 't3', title: 'The Listening Forest', meta: 'Trending · Story', hue: 155, href: '/universe?c=stories' },
   { id: 't4', title: 'Orbital Quiet', meta: 'Trending · Universe', hue: 255, href: '/universe?c=worlds' },
-  { id: 't5', title: 'Signal Choir', meta: 'Trending · Live', hue: 230, href: '/universe?c=music' },
+  { id: 't5', title: 'Night Circuit', meta: 'Trending · Show', hue: 18, href: '/universe?c=shows' },
 ]
 
 const movies: RailItem[] = [
@@ -39,12 +39,12 @@ const forYou: RailItem[] = [
   { id: 'f1', title: 'Your Midnight Cut', meta: 'Generated for you', hue: 255, href: '/converse' },
   { id: 'f2', title: 'Companion Route B', meta: 'Personal thread', hue: 310, href: '/converse' },
   { id: 'f3', title: 'City That Remembers You', meta: 'Adaptive world', hue: 205, href: '/universe?c=worlds' },
-  { id: 'f4', title: 'Soft Score Session', meta: 'Mood match', hue: 175, href: '/universe?c=music' },
+  { id: 'f4', title: 'Harbor Desk', meta: 'Mood match', hue: 18, href: '/universe?c=shows' },
 ]
 
 const recent: RailItem[] = [
   { id: 'r1', title: 'Pale Constellation', meta: 'Created 2h ago', hue: 265, href: '/universe?c=worlds' },
-  { id: 'r2', title: 'Velvet Circuit', meta: 'Created 5h ago', hue: 340, href: '/universe?c=music' },
+  { id: 'r2', title: 'Studio Seven', meta: 'Created 5h ago', hue: 18, href: '/universe?c=shows' },
   { id: 'r3', title: 'Ash & Aurora', meta: 'Created today', hue: 40, href: '/universe?c=movies' },
   { id: 'r4', title: 'Mirror Market', meta: 'Created yesterday', hue: 185, href: '/universe?c=games' },
 ]
