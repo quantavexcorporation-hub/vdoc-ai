@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils'
 import {
   ADDONS,
   COMPARE,
+  INR_PER_USD,
   PLANS,
   type AddOnId,
   type BillingCycle,
@@ -25,6 +26,43 @@ import {
 
 function rupees(value: number) {
   return new Intl.NumberFormat('en-IN', { maximumFractionDigits: 0 }).format(value)
+}
+
+function dollars(value: number) {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
+  }).format(value / INR_PER_USD)
+}
+
+function PriceMark({
+  inr,
+  cadence,
+  size = 'lg',
+}: {
+  inr: number
+  cadence: string
+  size?: 'lg' | 'sm'
+}) {
+  if (size === 'sm') {
+    return (
+      <span className="text-right text-xs text-cyan">
+        ₹{rupees(inr)}
+        {cadence}
+        <span className="mt-0.5 block text-[11px] text-white/45">{dollars(inr)}</span>
+      </span>
+    )
+  }
+
+  return (
+    <p className="mt-4 font-display text-2xl font-semibold leading-none text-lunar">
+      ₹{rupees(inr)}
+      <span className="ml-1 text-xs font-medium text-white/40">{cadence}</span>
+      <span className="mt-1.5 block text-sm font-medium text-white/50">{dollars(inr)}</span>
+    </p>
+  )
 }
 
 export function UpgradeApp() {
@@ -127,12 +165,7 @@ export function UpgradeApp() {
                     </span>
                   ) : null}
                 </div>
-                <p className="mt-4 font-display text-2xl font-semibold text-lunar">
-                  ₹{rupees(price)}
-                  <span className="ml-1 text-xs font-medium text-white/40">
-                    {cycle === 'monthly' ? '/mo' : '/yr'}
-                  </span>
-                </p>
+                <PriceMark inr={price} cadence={cycle === 'monthly' ? '/mo' : '/yr'} />
                 <ul className="mt-4 space-y-2">
                   {item.bullets.map((bullet) => (
                     <li key={bullet} className="flex items-start gap-2 text-xs text-white/55">
@@ -222,7 +255,7 @@ export function UpgradeApp() {
                 >
                   <div className="flex items-start justify-between gap-3">
                     <p className="text-sm font-medium text-white/90">{addon.name}</p>
-                    <p className="text-xs text-cyan">₹{rupees(addon.priceMonthly)}/mo</p>
+                    <PriceMark inr={addon.priceMonthly} cadence="/mo" size="sm" />
                   </div>
                   <p className="mt-1 text-xs text-white/45">{addon.description}</p>
                 </button>
@@ -248,8 +281,8 @@ export function UpgradeApp() {
             </button>
           </div>
           <p className="mt-4 rounded-xl border border-white/10 bg-black/25 px-4 py-3 text-xs text-white/45">
-            Estimated total ₹{rupees(total)} {cycle === 'monthly' ? '/mo' : '/yr'}. Nothing was
-            charged. Accounts and payment come later.
+            Estimated total ₹{rupees(total)} {cycle === 'monthly' ? '/mo' : '/yr'} · {dollars(total)}.
+            Nothing was charged. Accounts and payment come later.
           </p>
         </section>
       </main>

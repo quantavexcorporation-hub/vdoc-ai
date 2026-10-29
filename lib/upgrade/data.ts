@@ -26,15 +26,15 @@ export const PLANS: Plan[] = [
     id: 'floor',
     name: 'FLOOR',
     tagline: 'Open room',
-    monthlyPrice: 0,
-    yearlyPrice: 0,
+    monthlyPrice: 399,
+    yearlyPrice: 3990,
     bullets: [
       'Sample pictures and staged rooms',
       'The Listening Forest and four endings',
       'Vyra floor as it stands',
       'Guided Converse replies',
     ],
-    cta: 'Stay on Floor',
+    cta: 'Hold Floor',
   },
   {
     id: 'plus',
@@ -95,6 +95,9 @@ export const ADDONS: AddOn[] = [
     priceMonthly: 179,
   },
 ]
+
+/** Locked display rate so rupee and dollar stay paired. */
+export const INR_PER_USD = 83.5
 
 export const COMPARE = [
   { feature: 'Watch', floor: 'Samples', plus: 'Library', premiere: 'First look' },
