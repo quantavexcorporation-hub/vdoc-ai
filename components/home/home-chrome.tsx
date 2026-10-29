@@ -3,7 +3,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { PanelLeft, Settings, X, LayoutDashboard } from 'lucide-react'
+import { PanelLeft, X, LayoutDashboard } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { BrandLogo } from '@/components/brand/logo'
 import { LogoAwaken } from '@/components/os/logo-awaken'
@@ -13,9 +13,6 @@ import {
   entertainmentNavGroups,
   type RailItem,
 } from '@/lib/os/nav'
-import { readUserName, readUserFocus } from '@/lib/os/user-space'
-import { getSpaceRole } from '@/lib/nexus/access'
-
 export function HomeChrome() {
   const pathname = usePathname()
   const router = useRouter()
@@ -26,15 +23,9 @@ export function HomeChrome() {
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const [predicted, setPredicted] = React.useState<string[]>([])
   const [awaken, setAwaken] = React.useState(false)
-  const [spaceName, setSpaceName] = React.useState('You')
-  const [spaceFocus, setSpaceFocus] = React.useState('Your space')
-  const [spaceRole, setSpaceRole] = React.useState<'audience' | 'creator'>('audience')
 
   React.useEffect(() => {
     setPredicted(predictNext(2))
-    setSpaceName(readUserName())
-    setSpaceFocus(readUserFocus())
-    setSpaceRole(getSpaceRole())
   }, [pathname])
 
   const visit = (id: string) => {
@@ -216,37 +207,6 @@ export function HomeChrome() {
           </div>
         ))}
       </nav>
-
-      <div className="border-t border-white/[0.06] p-2">
-        <div className="mb-2 space-y-1 rounded-lg px-2.5 py-1.5">
-          <div className="flex items-center gap-2 text-[11px] text-white/40">
-            <span className="relative flex size-1.5">
-              <span className="absolute inset-0 animate-ping rounded-full bg-emerald-400/60" />
-              <span className="relative size-1.5 rounded-full bg-emerald-400" />
-            </span>
-            Machine online
-          </div>
-          <p className="font-mono text-[9px] tracking-[0.14em] text-white/25">
-            AI ENGINE · DATA LAYER · LIVE
-          </p>
-        </div>
-        <Link
-          href="/settings"
-          onClick={() => visit('settings')}
-          className="flex w-full items-center gap-3 rounded-lg px-2 py-2 transition-colors hover:bg-white/[0.05]"
-        >
-          <span className="flex size-8 shrink-0 items-center justify-center rounded-full bg-white/[0.08] text-xs font-medium text-white/80">
-            {spaceName.slice(0, 1).toUpperCase()}
-          </span>
-          <span className="min-w-0 flex-1 text-left">
-            <span className="block truncate text-sm text-white/85">{spaceName}</span>
-            <span className="block truncate text-xs text-white/35">
-              {spaceRole === 'creator' ? 'Creator' : 'Audience'} · {spaceFocus.split('·')[0]?.trim()}
-            </span>
-          </span>
-          <Settings className="size-4 shrink-0 text-white/35" aria-hidden />
-        </Link>
-      </div>
     </>
   )
 
