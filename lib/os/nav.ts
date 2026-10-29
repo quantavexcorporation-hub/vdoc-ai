@@ -259,14 +259,6 @@ export const entertainmentNavGroups: RailGroup[] = [
         badge: 'MAKE',
       },
       {
-        id: 'creators',
-        icon: Radio,
-        label: 'Creator Spotlight',
-        href: '/#creators',
-        hue: 280,
-        match: ({ pathname, hash }) => pathname === '/' && hash === 'creators',
-      },
-      {
         id: 'voice',
         icon: Mic2,
         label: 'Voice Converse',
