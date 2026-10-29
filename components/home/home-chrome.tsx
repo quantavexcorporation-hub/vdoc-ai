@@ -3,15 +3,13 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { PanelLeft, Search, Settings, X, LayoutDashboard } from 'lucide-react'
+import { PanelLeft, Settings, X, LayoutDashboard } from 'lucide-react'
 import { cn } from '@/lib/utils'
-import { DsCommandPalette, useCommandPaletteShortcut } from '@/components/ds'
 import { BrandLogo } from '@/components/brand/logo'
 import { LogoAwaken } from '@/components/os/logo-awaken'
 import type { UniverseCategory } from '@/lib/universe/data'
 import { recordHabit, predictNext } from '@/lib/os/habits'
 import {
-  entertainmentNav,
   entertainmentNavGroups,
   type RailItem,
 } from '@/lib/os/nav'
@@ -25,14 +23,12 @@ export function HomeChrome() {
   const activeCategory = searchParams.get('c') as UniverseCategory | null
   const [hash, setHash] = React.useState('')
 
-  const [open, setOpen] = React.useState(false)
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const [predicted, setPredicted] = React.useState<string[]>([])
   const [awaken, setAwaken] = React.useState(false)
   const [spaceName, setSpaceName] = React.useState('You')
   const [spaceFocus, setSpaceFocus] = React.useState('Your space')
   const [spaceRole, setSpaceRole] = React.useState<'audience' | 'creator'>('audience')
-  useCommandPaletteShortcut(open, setOpen)
 
   React.useEffect(() => {
     setPredicted(predictNext(2))
@@ -181,22 +177,8 @@ export function HomeChrome() {
         </button>
       </div>
 
-      <div className="space-y-1 px-2">
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          className="flex w-full items-center gap-2.5 rounded-lg px-3 py-2 text-sm text-white/45 transition-colors hover:bg-white/[0.05] hover:text-white/80"
-        >
-          <Search className="size-4" aria-hidden />
-          <span className="flex-1 text-left">Search</span>
-          <kbd className="rounded border border-white/[0.08] px-1.5 py-0.5 font-mono text-[10px] text-white/35">
-            ⌘K
-          </kbd>
-        </button>
-      </div>
-
       <nav
-        className="mt-4 min-h-0 flex-1 overflow-y-auto px-2 pb-3 scrollbar-none"
+        className="min-h-0 flex-1 overflow-y-auto px-2 pb-3 scrollbar-none"
         aria-label="Entertainment"
       >
         {entertainmentNavGroups.map((group) => (
@@ -293,14 +275,6 @@ export function HomeChrome() {
           onClick={() => startLogoAwaken()}
           className="min-w-0"
         />
-        <button
-          type="button"
-          onClick={() => setOpen(true)}
-          className="ml-auto inline-flex size-11 shrink-0 items-center justify-center rounded-lg text-white/55 hover:bg-white/[0.06]"
-          aria-label="Search"
-        >
-          <Search className="size-5" />
-        </button>
       </div>
 
       <div
@@ -331,22 +305,6 @@ export function HomeChrome() {
           {SidebarBody}
         </aside>
       </div>
-
-      <DsCommandPalette
-        open={open}
-        onOpenChange={setOpen}
-        items={entertainmentNavGroups.flatMap((group) =>
-          group.items.map((item) => ({
-            id: item.id,
-            label: item.label,
-            group: group.label,
-            icon: <item.icon className="size-4" />,
-            onSelect: () => {
-              window.location.href = item.href
-            },
-          }))
-        )}
-      />
 
       <LogoAwaken open={awaken} onComplete={finishLogoAwaken} />
     </>

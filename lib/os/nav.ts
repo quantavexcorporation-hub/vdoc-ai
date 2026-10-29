@@ -180,13 +180,13 @@ export const entertainmentNavGroups: RailGroup[] = [
         hue: 175,
       },
       {
-        id: 'layers',
-        icon: Layers,
-        label: 'Remix Experience',
-        href:
-          '/converse?q=' +
-          encodeURIComponent('Remix my last entertainment experience'),
-        hue: 300,
+        id: 'quick',
+        icon: Sparkles,
+        label: 'Quick Entertain',
+        href: '/#quick-entertainment',
+        hue: 25,
+        match: ({ pathname, hash }) =>
+          pathname === '/' && hash === 'quick-entertainment',
       },
     ],
   },
@@ -309,15 +309,6 @@ export const entertainmentNavGroups: RailGroup[] = [
         badge: 'HOT',
         pulse: true,
         match: ({ pathname, hash }) => pathname === '/' && hash === 'trending',
-      },
-      {
-        id: 'quick',
-        icon: Sparkles,
-        label: 'Quick Entertain',
-        href: '/#quick-entertainment',
-        hue: 25,
-        match: ({ pathname, hash }) =>
-          pathname === '/' && hash === 'quick-entertainment',
       },
       {
         id: 'recent',
