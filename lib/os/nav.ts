@@ -80,7 +80,7 @@ export const entertainmentNavGroups: RailGroup[] = [
       {
         id: 'live',
         icon: Zap,
-        label: 'Vyra',
+        label: 'PLAYVERSE',
         href: '/live',
         hue: 210,
         badge: 'LIVE',

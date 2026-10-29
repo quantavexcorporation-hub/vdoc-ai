@@ -49,9 +49,9 @@ export const INTENT_ACTIONS: IntentAction[] = [
   {
     id: 'live',
     label: 'What is live right now',
-    hint: 'Enter Vyra',
+    hint: 'Enter PLAYVERSE',
     href: '/live',
-    keywords: ['live', 'now', 'happening', 'premiere', 'event', 'stream'],
+    keywords: ['live', 'now', 'happening', 'premiere', 'event', 'stream', 'playverse', 'vyra'],
   },
   {
     id: 'games',

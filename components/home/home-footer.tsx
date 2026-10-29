@@ -27,7 +27,7 @@ export function HomeFooter() {
             Virtual Universe
           </a>
           <a href="/live" className="min-h-10 inline-flex items-center transition-colors hover:text-white/80">
-            Vyra
+            PLAYVERSE
           </a>
           <a href="/universe" className="min-h-10 inline-flex items-center transition-colors hover:text-white/80">
             Universe

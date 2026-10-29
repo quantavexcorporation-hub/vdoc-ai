@@ -3,7 +3,7 @@ import { Suspense } from 'react'
 import { LiveApp } from '@/components/live/live-app'
 
 export const metadata: Metadata = {
-  title: 'Vyra — Live Entertainment',
+  title: 'PLAYVERSE — Live Entertainment',
   description:
     'Real-time AI-powered experiences, live creators, interactive events, premieres, and global entertainment.',
 }
@@ -13,7 +13,7 @@ export default function LivePage() {
     <Suspense
       fallback={
         <div className="flex min-h-dvh items-center justify-center bg-bg-void text-muted-foreground">
-          Entering Vyra…
+          Entering PLAYVERSE…
         </div>
       }
     >

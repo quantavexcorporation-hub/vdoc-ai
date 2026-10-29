@@ -40,7 +40,7 @@ export const FEATURE_SLIDES: FeatureSlide[] = [
   },
   {
     id: 'live',
-    eyebrow: 'Vyra',
+    eyebrow: 'PLAYVERSE',
     headline: 'Signal, live now',
     description: 'Premieres, interactive events, and creators broadcasting in real time.',
     cta: 'Go live',
@@ -88,7 +88,7 @@ export const AD_SLOTS: AdSlot[] = [
   },
   {
     id: 'live-pass',
-    sponsor: 'Vyra',
+    sponsor: 'PLAYVERSE',
     badge: 'Featured',
     headline: 'Creator Stage Pass',
     body: 'Front-row access to interactive premieres and signal events.',

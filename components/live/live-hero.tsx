@@ -45,15 +45,15 @@ export function LiveHero() {
 
       <div className="relative mx-auto flex w-full max-w-[1400px] flex-1 flex-col justify-end px-4 pb-6 pt-8 sm:px-6 md:px-10 md:pb-10 md:pt-24">
         <div className="flex flex-wrap items-center gap-3">
-          <LiveBadge label="Vyra" />
+          <LiveBadge label="PLAYVERSE" />
           <span className="text-[11px] uppercase tracking-[0.22em] text-white/55">Live floor</span>
         </div>
 
         <h1
           id="live-headline"
-          className="mt-4 font-display text-[clamp(4.6rem,20vw,13rem)] font-semibold leading-[0.78] tracking-[-0.06em] text-white"
+          className="mt-4 font-display text-[clamp(2.4rem,11vw,8rem)] font-semibold leading-[0.82] tracking-[-0.05em] text-white"
         >
-          VYRA
+          PLAYVERSE
         </h1>
         <p className="mt-4 max-w-xl text-base text-white/70 sm:text-lg">
           The live floor. Premieres, creators, and rooms that shift while you are still inside.
@@ -87,7 +87,7 @@ export function LiveHero() {
         </div>
 
         <div className="mt-6 overflow-hidden">
-          <div className="vyra-drift flex w-max gap-3">
+          <div className="playverse-drift flex w-max gap-3">
             {rooms.map((room, index) => (
               <a
                 key={`${room.id}-${index}`}

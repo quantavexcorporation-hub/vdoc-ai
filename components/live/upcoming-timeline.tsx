@@ -15,7 +15,7 @@ export function UpcomingTimeline() {
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <p className="ds-label mb-3">Later tonight</p>
         <h2 id="upcoming-title" className="font-display text-[clamp(2rem,4vw,3.4rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-lunar">
-          Next on Vyra
+          Next on PLAYVERSE
         </h2>
         <p className="mt-3 max-w-md ds-body">Set a reminder. Enter when the signal opens.</p>
 

@@ -37,7 +37,7 @@ export function AiExperiencePanel() {
                 id="ai-panel-title"
                 className="font-display text-[clamp(2.2rem,5vw,4rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-lunar"
               >
-                Vyra stays awake
+                PLAYVERSE stays awake
               </h2>
               <p className="mt-5 max-w-md ds-body">
                 While you rest, experiences continue. Stories evolve. Worlds keep running.

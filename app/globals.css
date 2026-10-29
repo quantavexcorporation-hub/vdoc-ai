@@ -2561,15 +2561,15 @@
   .vu-float { animation: none !important; }
 }
 
-@keyframes vyra-drift {
+@keyframes playverse-drift {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 
-.vyra-drift {
-  animation: vyra-drift 42s linear infinite;
+.playverse-drift {
+  animation: playverse-drift 42s linear infinite;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .vyra-drift { animation: none; }
+  .playverse-drift { animation: none; }
 }

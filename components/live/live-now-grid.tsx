@@ -93,7 +93,7 @@ export function LiveNowGrid() {
           <div>
             <p className="ds-label mb-3">Open now</p>
             <h2 id="live-now-title" className="font-display text-[clamp(2rem,4vw,3.4rem)] font-semibold leading-[0.95] tracking-[-0.04em] text-lunar">
-              Rooms on Vyra
+              Rooms on PLAYVERSE
             </h2>
           </div>
           <div
