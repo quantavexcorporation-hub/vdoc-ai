@@ -9,7 +9,6 @@ import {
   Zap,
   Sparkles,
   Wand2,
-  Users,
   Gem,
   Brain,
   TrendingUp,
@@ -24,7 +23,6 @@ import {
   Moon,
   ListChecks,
   Calendar,
-  Aperture,
   Settings,
   type LucideIcon,
 } from 'lucide-react'
@@ -326,31 +324,6 @@ export const entertainmentNavGroups: RailGroup[] = [
         badge: 'PREVIEW',
         match: ({ pathname, hash }) =>
           pathname === '/' && hash === 'teaser-trailer',
-      },
-    ],
-  },
-  {
-    id: 'community',
-    label: 'Community',
-    items: [
-      {
-        id: 'community',
-        icon: Users,
-        label: 'Community',
-        href: '/#community',
-        hue: 190,
-        match: ({ pathname, hash }) => pathname === '/' && hash === 'community',
-      },
-      {
-        id: 'video-genesis',
-        icon: Aperture,
-        label: 'Video Genesis',
-        href: '/video-genesis',
-        hue: 190,
-        badge: 'STUDIO',
-        pulse: true,
-        match: ({ pathname }) =>
-          pathname === '/video-genesis' || pathname.startsWith('/video-genesis'),
       },
     ],
   },
