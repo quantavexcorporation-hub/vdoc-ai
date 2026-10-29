@@ -150,16 +150,6 @@ export const entertainmentNavGroups: RailGroup[] = [
     label: 'Intelligence',
     items: [
       {
-        id: 'mood-match',
-        icon: Heart,
-        label: 'Mood Match',
-        href: '/intelligence#mood-match',
-        hue: 350,
-        badge: 'FEEL',
-        match: ({ pathname, hash }) =>
-          pathname === '/intelligence' && hash === 'mood-match',
-      },
-      {
         id: 'top-rated',
         icon: Star,
         label: 'Top Rated Only',
@@ -180,6 +170,16 @@ export const entertainmentNavGroups: RailGroup[] = [
           pathname === '/intelligence' && hash === 'continue-watch',
       },
       {
+        id: 'unfinished',
+        icon: ListChecks,
+        label: 'Unfinished',
+        href: '/intelligence#unfinished',
+        hue: 45,
+        badge: 'CLEAR',
+        match: ({ pathname, hash }) =>
+          pathname === '/intelligence' && hash === 'unfinished',
+      },
+      {
         id: 'favourite-upcoming',
         icon: Calendar,
         label: 'Favourite Upcoming',
@@ -190,6 +190,16 @@ export const entertainmentNavGroups: RailGroup[] = [
           pathname === '/intelligence' && hash === 'favourite-upcoming',
       },
       {
+        id: 'mood-match',
+        icon: Heart,
+        label: 'Mood Match',
+        href: '/intelligence#mood-match',
+        hue: 350,
+        badge: 'FEEL',
+        match: ({ pathname, hash }) =>
+          pathname === '/intelligence' && hash === 'mood-match',
+      },
+      {
         id: 'evening-intent',
         icon: Moon,
         label: 'Evening Intent',
@@ -198,16 +208,6 @@ export const entertainmentNavGroups: RailGroup[] = [
         badge: 'NIGHT',
         match: ({ pathname, hash }) =>
           pathname === '/intelligence' && hash === 'evening-intent',
-      },
-      {
-        id: 'unfinished',
-        icon: ListChecks,
-        label: 'Unfinished',
-        href: '/intelligence#unfinished',
-        hue: 45,
-        badge: 'CLEAR',
-        match: ({ pathname, hash }) =>
-          pathname === '/intelligence' && hash === 'unfinished',
       },
     ],
   },

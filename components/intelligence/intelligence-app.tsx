@@ -4,14 +4,11 @@ import Link from 'next/link'
 import {
   ArrowRight,
   Calendar,
-  Fingerprint,
   Heart,
   Moon,
   Play,
   Star,
   Sparkles,
-  Sunset,
-  Layers,
   ListChecks,
 } from 'lucide-react'
 import { HomeFooter } from '@/components/home/home-footer'
@@ -20,15 +17,12 @@ import { VdocShell } from '@/components/os/vdoc-shell'
 import { INTEL_NEEDS } from '@/lib/os/intelligence-needs'
 
 const ICONS: Record<string, typeof Sparkles> = {
-  'mood-match': Heart,
   'top-rated': Star,
   'continue-watch': Play,
-  'favourite-upcoming': Calendar,
-  'taste-mirror': Fingerprint,
-  afterglow: Sunset,
-  'evening-intent': Moon,
   unfinished: ListChecks,
-  'thread-continuity': Layers,
+  'favourite-upcoming': Calendar,
+  'mood-match': Heart,
+  'evening-intent': Moon,
 }
 
 /**
@@ -47,8 +41,8 @@ export function IntelligenceApp() {
           Problems entertainment never solved.
         </h1>
         <p className="mt-3 max-w-xl text-sm leading-relaxed text-white/45">
-          Not more shelves. Not more rankings. Intelligence for the painful gaps — mood,
-          trust, re-entry, afterglow, unfinished guilt, and worlds that die at the credits.
+          Not more shelves. Not more rankings. Intelligence for the painful gaps — peak
+          titles, resume, unfinished lists, upcoming favourites, mood, and one night well spent.
         </p>
 
         <div className="mt-10 space-y-4">
