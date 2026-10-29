@@ -30,9 +30,9 @@ const PANELS: Panel[] = [
   {
     id: 'assistant',
     eyebrow: 'AI Assistant',
-    title: 'Command the OS',
-    insight: 'Speak intent — AI engine routes movies, worlds, branches.',
-    href: '/converse',
+    title: 'Ask on this floor',
+    insight: 'Guided replies stay on the dashboard — not in the sidebar.',
+    href: '/#ai-assistant',
     icon: Brain,
     pulse: true,
   },

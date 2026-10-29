@@ -1,5 +1,6 @@
 import { Suspense, lazy, type ReactNode } from 'react'
 import { HomeHero } from '@/components/home/home-hero'
+import { DashboardAssistant } from '@/components/home/dashboard-assistant'
 import { HomeFooter } from '@/components/home/home-footer'
 import { LivingAtmosphere } from '@/components/os/living-atmosphere'
 import { VdocShell } from '@/components/os/vdoc-shell'
@@ -55,6 +56,7 @@ export default function VdocHomePage() {
       <div className="vdoc-enter-smooth">
         <main>
           <HomeHero />
+          <DashboardAssistant />
           <BelowFold>
             <CommandCenter />
           </BelowFold>

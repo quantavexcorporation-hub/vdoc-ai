@@ -35,11 +35,8 @@ export function HomeHero() {
 
   const submit = () => {
     const q = value.trim()
-    if (!q) {
-      router.push('/converse')
-      return
-    }
-    router.push(`/converse?q=${encodeURIComponent(q)}`)
+    window.dispatchEvent(new CustomEvent('vdoc-floor-ask', { detail: { prompt: q } }))
+    setValue('')
   }
 
   return (

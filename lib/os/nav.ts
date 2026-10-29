@@ -10,7 +10,6 @@ import {
   Sparkles,
   Wand2,
   Gem,
-  Brain,
   TrendingUp,
   Radio,
   Mic2,
@@ -89,16 +88,6 @@ export const entertainmentNavGroups: RailGroup[] = [
     id: 'universe',
     label: 'Core',
     items: [
-      {
-        id: 'assistant',
-        icon: Brain,
-        label: 'AI Assistant',
-        href: '/converse',
-        hue: 265,
-        badge: 'AI',
-        pulse: true,
-        match: ({ pathname }) => pathname === '/converse',
-      },
       {
         id: 'movies',
         icon: Clapperboard,
