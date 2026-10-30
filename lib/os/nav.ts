@@ -80,6 +80,12 @@ export const entertainmentNavGroups: RailGroup[] = [
         match: ({ pathname, category }) =>
           pathname === '/universe' && category === 'games',
       },
+    ],
+  },
+  {
+    id: 'pages',
+    label: 'Pages',
+    items: [
       {
         id: 'stories',
         icon: BookOpen,
