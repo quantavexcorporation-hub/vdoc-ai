@@ -83,8 +83,8 @@ export const entertainmentNavGroups: RailGroup[] = [
     ],
   },
   {
-    id: 'lore',
-    label: 'Lore',
+    id: 'reads',
+    label: 'Reads',
     items: [
       {
         id: 'stories',
