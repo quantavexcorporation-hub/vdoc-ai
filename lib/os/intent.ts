@@ -84,7 +84,7 @@ export const INTENT_ACTIONS: IntentAction[] = [
   {
     id: 'cards',
     label: 'Open collectible cards',
-    hint: 'Legendary · Epic · Rare floor',
+    hint: 'Cards Leaderboard desk',
     href: '/cards',
     keywords: [
       'card',
@@ -97,6 +97,8 @@ export const INTENT_ACTIONS: IntentAction[] = [
       'mint',
       'trade',
       'holo',
+      'leaderboard',
+      'desk',
     ],
   },
   {

@@ -7,8 +7,7 @@ import { HomeFooter } from '@/components/home/home-footer'
 import { LivingAtmosphere } from '@/components/os/living-atmosphere'
 import { VdocShell } from '@/components/os/vdoc-shell'
 import { describeCardKind } from '@/lib/cards/chain'
-import { RARITY_COPY } from '@/lib/cards/catalog'
-import { CARD_RARITIES, type CardRarity } from '@/lib/cards/types'
+import type { CardRarity } from '@/lib/cards/types'
 import { CardsProvider, useCards, youOf } from '@/lib/cards/store'
 import { LumenMark } from './holo-card'
 import { cn } from '@/lib/utils'
@@ -26,12 +25,11 @@ function CardsInner({ children }: { children: ReactNode }) {
   const you = youOf(state)
 
   const links = [
-    { href: '/cards', label: 'Marketplace', current: pathname === '/cards' && !rarity },
-    ...CARD_RARITIES.map((item) => ({
-      href: `/cards?r=${item}`,
-      label: RARITY_COPY[item].label,
-      current: pathname === '/cards' && rarity === item,
-    })),
+    {
+      href: '/cards',
+      label: 'Leaderboard',
+      current: pathname === '/cards',
+    },
     {
       href: '/cards/collection',
       label: 'Collection',

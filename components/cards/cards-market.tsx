@@ -1,7 +1,7 @@
 'use client'
 
 import * as React from 'react'
-import { useSearchParams } from 'next/navigation'
+import Link from 'next/link'
 import { DsButton, DsSearchBar } from '@/components/ds'
 import { EVOLVE_FEE, FLOOR_MIN, MINT_FEE, RARITY_COPY } from '@/lib/cards/catalog'
 import { mintedCount } from '@/lib/cards/ledger'
@@ -11,15 +11,27 @@ import {
   useCards,
   youOf,
 } from '@/lib/cards/store'
-import type { CardRarity } from '@/lib/cards/types'
+import { CARD_RARITIES, type CardRarity } from '@/lib/cards/types'
 import { HoloCard, LumenMark } from './holo-card'
-import { parseRarity } from './cards-shell'
 
 type SortKey = 'featured' | 'newest' | 'price' | 'edition'
 
+type ListingRow = NonNullable<
+  ReturnType<typeof buildRow>
+>
+
+function buildRow(
+  state: ReturnType<typeof useCards>['state'],
+  instanceId: string
+) {
+  const instance = state.instances.find((item) => item.id === instanceId)
+  if (!instance || !instance.listed || instance.listPrice == null) return null
+  const card = cardById(state, instance.cardId)
+  const owner = collectorById(state, instance.ownerId)
+  return card && owner ? { instance, card, owner } : null
+}
+
 export function CardsMarket() {
-  const searchParams = useSearchParams()
-  const rarity = parseRarity(searchParams.get('r'))
   const { state, ready, buy, mint, report } = useCards()
   const you = youOf(state)
   const [query, setQuery] = React.useState('')
@@ -30,14 +42,8 @@ export function CardsMarket() {
   const listings = React.useMemo(() => {
     const q = query.trim().toLowerCase()
     const rows = state.instances
-      .filter((instance) => instance.listed && instance.listPrice != null)
-      .map((instance) => {
-        const card = cardById(state, instance.cardId)
-        const owner = collectorById(state, instance.ownerId)
-        return card && owner ? { instance, card, owner } : null
-      })
-      .filter((row): row is NonNullable<typeof row> => Boolean(row))
-      .filter((row) => !rarity || row.card.rarity === rarity)
+      .map((instance) => buildRow(state, instance.id))
+      .filter((row): row is ListingRow => Boolean(row))
       .filter((row) => {
         if (!q) return true
         return (
@@ -49,175 +55,213 @@ export function CardsMarket() {
       })
 
     return rows.sort((a, b) => {
-      if (sort === 'price') return (a.instance.listPrice ?? 0) - (b.instance.listPrice ?? 0)
+      if (sort === 'price') return (b.instance.listPrice ?? 0) - (a.instance.listPrice ?? 0)
       if (sort === 'edition') return a.instance.edition - b.instance.edition
       if (sort === 'newest') return b.instance.createdAt.localeCompare(a.instance.createdAt)
       return (a.card.featuredRank ?? 99) - (b.card.featuredRank ?? 99)
     })
-  }, [query, rarity, sort, state])
+  }, [query, sort, state])
 
-  const catalog = React.useMemo(() => {
-    return state.cards.filter((card) => !rarity || card.rarity === rarity)
-  }, [rarity, state.cards])
-
-  const copy = rarity ? RARITY_COPY[rarity] : null
+  const byRarity = React.useMemo(() => {
+    const groups = {} as Record<CardRarity, ListingRow[]>
+    for (const rarity of CARD_RARITIES) groups[rarity] = []
+    for (const row of listings) groups[row.card.rarity].push(row)
+    return groups
+  }, [listings])
 
   return (
-    <div data-nft-floor={rarity ?? 'all'} className="vdoc-nft-floor">
-      <section className="vdoc-section-glow px-4 py-10 sm:px-6 md:px-10 md:py-16">
+    <div data-nft-floor="all" className="vdoc-nft-floor">
+      <section className="px-4 py-8 sm:px-6 md:px-10 md:py-12">
         <div className="mx-auto max-w-[1400px]">
-          <p className="ds-label mb-3">{copy?.eyebrow ?? 'Collectible floor'}</p>
-          <h1 className="ds-heading-lg max-w-3xl text-lunar text-[clamp(1.6rem,4vw,2.6rem)]">
-            {copy?.title ?? 'Cards. Own a face of the floor.'}
+          <p className="ds-label mb-3">Cards desk</p>
+          <h1 className="ds-heading-lg max-w-3xl text-lunar text-[clamp(1.6rem,4vw,2.4rem)]">
+            Leaderboard
           </h1>
-          <p className="mt-3 max-w-2xl text-sm text-muted-foreground sm:text-base">
-            {copy?.body ??
-              'Legendary, Epic, and Rare only. Buy, mint, trade, and evolve platform-native cards. No extra rarity tiers.'}
+          <p className="mt-3 max-w-2xl text-sm text-muted-foreground">
+            Legendary, Epic, and Rare sit in one desk. Floor credit only — not a
+            purchase, not a chain.
           </p>
-        </div>
-      </section>
 
-      <section className="px-4 pb-8 sm:px-6 md:px-10">
-        <div className="mx-auto flex max-w-[1400px] flex-col gap-3 lg:flex-row lg:items-center">
-          <DsSearchBar
-            id="cards-search"
-            value={query}
-            onValueChange={setQuery}
-            placeholder="Search title, creator, series, owner…"
-            className="max-w-xl"
-          />
-          <label className="flex items-center gap-2 text-[13px] text-white/50">
-            Sort
-            <select
-              value={sort}
-              onChange={(e) => setSort(e.target.value as SortKey)}
-              className="h-10 rounded-[var(--radius-lg)] border border-white/10 bg-white/[0.03] px-3 text-sm text-foreground"
-            >
-              <option value="featured">Featured</option>
-              <option value="newest">Newest</option>
-              <option value="price">Price</option>
-              <option value="edition">Edition</option>
-            </select>
-          </label>
-        </div>
-      </section>
+          <article
+            className="vdoc-card-desk mt-8 overflow-hidden rounded-[1.4rem] border border-white/10 bg-white/[0.03]"
+            aria-labelledby="cards-desk-title"
+          >
+            <header className="flex flex-col gap-3 border-b border-white/8 px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-5">
+              <div>
+                <p id="cards-desk-title" className="font-mono text-[11px] tracking-[0.16em] text-white/40">
+                  LEADERBOARD · FLOOR DESK
+                </p>
+                <p className="mt-1 text-[13px] text-white/55">
+                  {ready ? `${listings.length} quotes` : 'Reading this device…'} · three books
+                </p>
+              </div>
+              <div className="flex min-w-0 flex-1 flex-col gap-2 sm:max-w-xl sm:flex-row sm:items-center sm:justify-end">
+                <DsSearchBar
+                  id="cards-search"
+                  value={query}
+                  onValueChange={setQuery}
+                  placeholder="Search title, creator, owner…"
+                  className="max-w-full"
+                />
+                <label className="flex items-center gap-2 text-[13px] text-white/50">
+                  Rank
+                  <select
+                    value={sort}
+                    onChange={(e) => setSort(e.target.value as SortKey)}
+                    className="h-10 rounded-[var(--radius-lg)] border border-white/10 bg-white/[0.03] px-3 text-sm text-foreground"
+                  >
+                    <option value="featured">Featured</option>
+                    <option value="price">Quote</option>
+                    <option value="newest">Newest</option>
+                    <option value="edition">Edition</option>
+                  </select>
+                </label>
+              </div>
+            </header>
 
-      <section className="px-4 pb-16 sm:px-6 md:px-10" aria-labelledby="cards-market-title">
-        <div className="mx-auto max-w-[1400px]">
-          <h2 id="cards-market-title" className="ds-heading-lg text-xl text-lunar">
-            Live listings
-          </h2>
-          <p className="mt-2 text-sm text-white/45">
-            {ready ? `${listings.length} listed` : 'Reading this device…'} · floor
-            credit only
-          </p>
-          {listings.length === 0 ? (
-            <p className="mt-8 text-sm text-muted-foreground">
-              No listings match. Mint a remaining edition or open another rarity.
-            </p>
-          ) : (
-            <ul className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-              {listings.map(({ card, instance, owner }) => (
-                <li key={instance.id} className="ds-glass rounded-[1.25rem] p-4">
-                  <HoloCard card={card} instance={instance} href={`/cards/${card.id}`} />
-                  <div className="mt-4 flex flex-wrap items-end justify-between gap-3">
-                    <div>
-                      <p className="text-[12px] text-white/45">
-                        {owner.name} · {owner.handle}
-                      </p>
-                      <p className="mt-1 text-sm">
-                        <LumenMark value={instance.listPrice ?? 0} />
+            <div className="grid md:grid-cols-3">
+              {CARD_RARITIES.map((rarity) => {
+                const rows = byRarity[rarity]
+                const books = state.cards.filter((card) => card.rarity === rarity)
+                const lead = rows[0]
+                return (
+                  <section
+                    key={rarity}
+                    data-rarity={rarity}
+                    className="vdoc-card-book border-white/8 px-4 py-5 md:border-r md:last:border-r-0"
+                    aria-labelledby={`desk-${rarity}`}
+                  >
+                    <div className="flex items-end justify-between gap-3">
+                      <div>
+                        <p className="ds-label">{RARITY_COPY[rarity].eyebrow}</p>
+                        <h2 id={`desk-${rarity}`} className="mt-1 text-lg text-lunar">
+                          {RARITY_COPY[rarity].label}
+                        </h2>
+                      </div>
+                      <p className="font-mono text-[11px] text-white/40">
+                        {rows.length} live
                       </p>
                     </div>
-                    <div className="flex flex-wrap gap-2">
-                      <DsButton
-                        size="sm"
-                        disabled={!ready || owner.id === you?.id}
-                        onClick={() => buy(instance.id)}
-                      >
-                        Buy
-                      </DsButton>
-                      <DsButton
-                        size="sm"
-                        variant="ghost"
-                        onClick={() => setReportId(instance.id)}
-                      >
-                        Report
-                      </DsButton>
-                    </div>
-                  </div>
-                  {reportId === instance.id ? (
-                    <form
-                      className="mt-3 flex gap-2"
-                      onSubmit={(e) => {
-                        e.preventDefault()
-                        if (report(instance.id, reportText)) {
-                          setReportId(null)
-                          setReportText('')
-                        }
-                      }}
-                    >
-                      <input
-                        value={reportText}
-                        onChange={(e) => setReportText(e.target.value)}
-                        placeholder="Why is this listing off?"
-                        className="h-10 min-w-0 flex-1 rounded-[var(--radius-md)] border border-white/10 bg-white/[0.03] px-3 text-sm"
-                      />
-                      <DsButton size="sm" variant="outline" type="submit">
-                        Send
-                      </DsButton>
-                    </form>
-                  ) : null}
-                </li>
-              ))}
-            </ul>
-          )}
-        </div>
-      </section>
 
-      <section className="px-4 pb-20 sm:px-6 md:px-10" aria-labelledby="cards-catalog-title">
-        <div className="mx-auto max-w-[1400px]">
-          <h2 id="cards-catalog-title" className="ds-heading-lg text-xl text-lunar">
-            Catalog
-          </h2>
-          <p className="mt-2 text-sm text-white/45">
-            Mint remaining editions on this device. Fees:{' '}
-            {(Object.keys(MINT_FEE) as CardRarity[]).map((key, i) => (
-              <span key={key}>
-                {i ? ' · ' : ''}
-                {RARITY_COPY[key].label} {MINT_FEE[key]} Lm
-              </span>
-            ))}
-          </p>
-          <ul className="mt-6 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
-            {catalog.map((card) => {
-              const minted = mintedCount(state, card.id)
-              const left = card.editionLimit - minted
-              return (
-                <li key={card.id} className="ds-glass rounded-[1.25rem] p-4">
-                  <HoloCard card={card} href={`/cards/${card.id}`} />
-                  <div className="mt-4 flex flex-wrap items-end justify-between gap-3">
-                    <div className="text-[12px] text-white/50">
-                      <p>
-                        {minted} minted · {left} left
+                    {lead ? (
+                      <div className="mt-4">
+                        <HoloCard
+                          card={lead.card}
+                          instance={lead.instance}
+                          href={`/cards/${lead.card.id}`}
+                          size="sm"
+                        />
+                      </div>
+                    ) : (
+                      <p className="mt-4 text-sm text-white/40">No live quote in this book.</p>
+                    )}
+
+                    <ol className="mt-4 space-y-1.5">
+                      {rows.map((row, index) => (
+                        <li
+                          key={row.instance.id}
+                          className="rounded-xl border border-white/8 bg-black/20 px-2.5 py-2"
+                        >
+                          <div className="flex items-center justify-between gap-2">
+                            <Link
+                              href={`/cards/${row.card.id}`}
+                              className="min-w-0 text-[13px] text-lunar hover:text-cyan"
+                            >
+                              <span className="mr-2 font-mono text-[11px] text-white/35">
+                                {String(index + 1).padStart(2, '0')}
+                              </span>
+                              {row.card.title}
+                              <span className="ml-1 text-white/40">#{row.instance.edition}</span>
+                            </Link>
+                            <LumenMark value={row.instance.listPrice ?? 0} />
+                          </div>
+                          <div className="mt-2 flex items-center justify-between gap-2">
+                            <p className="truncate text-[11px] text-white/40">
+                              {row.owner.handle}
+                            </p>
+                            <div className="flex gap-1">
+                              <DsButton
+                                size="sm"
+                                disabled={!ready || row.owner.id === you?.id}
+                                onClick={() => buy(row.instance.id)}
+                              >
+                                Buy
+                              </DsButton>
+                              <DsButton
+                                size="sm"
+                                variant="ghost"
+                                onClick={() => setReportId(row.instance.id)}
+                              >
+                                Flag
+                              </DsButton>
+                            </div>
+                          </div>
+                          {reportId === row.instance.id ? (
+                            <form
+                              className="mt-2 flex gap-2"
+                              onSubmit={(e) => {
+                                e.preventDefault()
+                                if (report(row.instance.id, reportText)) {
+                                  setReportId(null)
+                                  setReportText('')
+                                }
+                              }}
+                            >
+                              <input
+                                value={reportText}
+                                onChange={(e) => setReportText(e.target.value)}
+                                placeholder="Why is this quote off?"
+                                className="h-9 min-w-0 flex-1 rounded-[var(--radius-md)] border border-white/10 bg-white/[0.03] px-2 text-sm"
+                              />
+                              <DsButton size="sm" variant="outline" type="submit">
+                                Send
+                              </DsButton>
+                            </form>
+                          ) : null}
+                        </li>
+                      ))}
+                    </ol>
+
+                    <div className="mt-5 border-t border-white/8 pt-4">
+                      <p className="font-mono text-[10px] tracking-[0.14em] text-white/35">
+                        MINT BOOK · {MINT_FEE[rarity]} LM
                       </p>
-                      <p>
-                        Floor {FLOOR_MIN[card.rarity]} · evolve {EVOLVE_FEE[card.rarity]}
+                      <ul className="mt-2 space-y-1.5">
+                        {books.slice(0, 4).map((card) => {
+                          const minted = mintedCount(state, card.id)
+                          const left = card.editionLimit - minted
+                          return (
+                            <li
+                              key={card.id}
+                              className="flex items-center justify-between gap-2 text-[12px]"
+                            >
+                              <Link href={`/cards/${card.id}`} className="min-w-0 truncate text-white/70 hover:text-cyan">
+                                {card.title}
+                                <span className="ml-1 text-white/35">
+                                  {left} left · floor {FLOOR_MIN[rarity]}
+                                </span>
+                              </Link>
+                              <DsButton
+                                size="sm"
+                                variant="glass"
+                                disabled={!ready || left <= 0}
+                                onClick={() => mint(card.id)}
+                              >
+                                Mint
+                              </DsButton>
+                            </li>
+                          )
+                        })}
+                      </ul>
+                      <p className="mt-2 text-[11px] text-white/30">
+                        Evolve {EVOLVE_FEE[rarity]} Lm
                       </p>
                     </div>
-                    <DsButton
-                      size="sm"
-                      variant="glass"
-                      disabled={!ready || left <= 0}
-                      onClick={() => mint(card.id)}
-                    >
-                      Mint native
-                    </DsButton>
-                  </div>
-                </li>
-              )
-            })}
-          </ul>
+                  </section>
+                )
+              })}
+            </div>
+          </article>
         </div>
       </section>
     </div>
