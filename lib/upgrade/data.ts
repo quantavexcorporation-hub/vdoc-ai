@@ -31,7 +31,7 @@ export const PLANS: Plan[] = [
     bullets: [
       'Sample pictures and staged rooms',
       'The Listening Forest and four endings',
-      'PLAYVERSE floor as it stands',
+      'Cards floor as it stands',
       'Guided Converse replies',
     ],
     cta: 'Hold Floor',
@@ -102,6 +102,6 @@ export const INR_PER_USD = 83.5
 export const COMPARE = [
   { feature: 'Watch', floor: 'Samples', plus: 'Library', premiere: 'First look' },
   { feature: 'Create', floor: 'Guided sketch', plus: 'Creator tools', premiere: 'Studio first' },
-  { feature: 'PLAYVERSE', floor: 'Staged rooms', plus: 'Open rooms', premiere: 'Main stage' },
+  { feature: 'Cards', floor: 'Native floor', plus: 'Saved collection', premiere: 'Studio first' },
   { feature: 'Worlds', floor: 'Preview vault', plus: 'Saved place', premiere: 'Private branch' },
 ]

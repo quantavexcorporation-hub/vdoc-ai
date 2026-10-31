@@ -39,12 +39,12 @@ export const FEATURE_SLIDES: FeatureSlide[] = [
     accent: '#a78bfa',
   },
   {
-    id: 'live',
-    eyebrow: 'PLAYVERSE',
-    headline: 'Signal, live now',
-    description: 'Premieres, interactive events, and creators broadcasting in real time.',
-    cta: 'Go live',
-    href: '/live',
+    id: 'cards',
+    eyebrow: 'Cards',
+    headline: 'Legendary. Epic. Rare.',
+    description: 'Platform-native collectibles with holographic editions on this floor.',
+    cta: 'Open Cards',
+    href: '/cards',
     accent: '#34d399',
   },
   {
@@ -72,7 +72,7 @@ export const SPOTLIGHT = {
   title: 'Neon Harbor Premiere',
   body: 'A live world rewrite tonight — streets rearrange around every presence.',
   cta: 'Enter premiere',
-  href: '/live',
+  href: '/universe?c=worlds',
 }
 
 export const AD_SLOTS: AdSlot[] = [
@@ -87,13 +87,13 @@ export const AD_SLOTS: AdSlot[] = [
     accent: '#67e8f9',
   },
   {
-    id: 'live-pass',
-    sponsor: 'PLAYVERSE',
+    id: 'cards-pass',
+    sponsor: 'Cards',
     badge: 'Featured',
-    headline: 'Creator Stage Pass',
-    body: 'Front-row access to interactive premieres and signal events.',
-    cta: 'Get pass',
-    href: '/live',
+    headline: 'Floor collectibles',
+    body: 'Legendary, Epic, and Rare cards — Lumen only, not a purchase.',
+    cta: 'Open Cards',
+    href: '/cards',
     accent: '#34d399',
   },
   {

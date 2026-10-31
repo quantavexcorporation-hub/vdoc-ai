@@ -1,23 +1,11 @@
 import type { Metadata } from 'next'
-import { Suspense } from 'react'
-import { LiveApp } from '@/components/live/live-app'
+import { redirect } from 'next/navigation'
 
 export const metadata: Metadata = {
-  title: 'PLAYVERSE — Live Entertainment',
-  description:
-    'Real-time AI-powered experiences, live creators, interactive events, premieres, and global entertainment.',
+  title: 'vdoc — AI Native Entertainment OS',
+  description: 'An AI-native entertainment operating system.',
 }
 
 export default function LivePage() {
-  return (
-    <Suspense
-      fallback={
-        <div className="flex min-h-dvh items-center justify-center bg-bg-void text-muted-foreground">
-          Entering PLAYVERSE…
-        </div>
-      }
-    >
-      <LiveApp />
-    </Suspense>
-  )
+  redirect('/')
 }

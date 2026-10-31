@@ -26,8 +26,8 @@ export function HomeFooter() {
           <a href="/economy" className="min-h-10 inline-flex items-center transition-colors hover:text-white/80">
             Virtual Universe
           </a>
-          <a href="/live" className="min-h-10 inline-flex items-center transition-colors hover:text-white/80">
-            PLAYVERSE
+          <a href="/cards" className="min-h-10 inline-flex items-center transition-colors hover:text-white/80">
+            Cards
           </a>
           <a href="/universe" className="min-h-10 inline-flex items-center transition-colors hover:text-white/80">
             Universe

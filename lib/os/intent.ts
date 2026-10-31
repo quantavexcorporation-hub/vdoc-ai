@@ -47,13 +47,6 @@ export const INTENT_ACTIONS: IntentAction[] = [
     keywords: ['create', 'new', 'generate', 'make', 'build', 'invent'],
   },
   {
-    id: 'live',
-    label: 'What is live right now',
-    hint: 'Enter PLAYVERSE',
-    href: '/live',
-    keywords: ['live', 'now', 'happening', 'premiere', 'event', 'stream', 'playverse', 'vyra'],
-  },
-  {
     id: 'games',
     label: 'I want to play',
     hint: 'AI Games universe',

@@ -17,7 +17,7 @@ export interface DsEmptyStateProps {
 
 const DEFAULT_SUGGESTIONS = [
   { label: 'Generate something new', href: '/converse' },
-  { label: 'Explore Live', href: '/live' },
+  { label: 'Open Cards', href: '/cards' },
   { label: 'Enter a world', href: '/universe?c=worlds' },
   { label: 'Browse stories', href: '/universe?c=stories' },
 ]

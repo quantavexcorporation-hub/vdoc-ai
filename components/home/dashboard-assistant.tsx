@@ -15,7 +15,7 @@ type Turn = {
 const STARTERS = [
   'What should I watch tonight?',
   'Open a quiet story',
-  'Find something live',
+  'Open collectible cards',
   'Open a novel',
 ]
 
