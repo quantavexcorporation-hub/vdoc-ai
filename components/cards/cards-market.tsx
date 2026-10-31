@@ -2,6 +2,7 @@
 
 import * as React from 'react'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import { DsButton, DsSearchBar } from '@/components/ds'
 import { EVOLVE_FEE, FLOOR_MIN, MINT_FEE, RARITY_COPY } from '@/lib/cards/catalog'
 import { mintedCount } from '@/lib/cards/ledger'
@@ -13,6 +14,8 @@ import {
 } from '@/lib/cards/store'
 import { CARD_RARITIES, type CardRarity } from '@/lib/cards/types'
 import { HoloCard, LumenMark } from './holo-card'
+import { parseRarity } from './cards-shell'
+import { cn } from '@/lib/utils'
 
 type SortKey = 'featured' | 'newest' | 'price' | 'edition'
 
@@ -32,6 +35,8 @@ function buildRow(
 }
 
 export function CardsMarket() {
+  const searchParams = useSearchParams()
+  const rarityFocus = parseRarity(searchParams.get('r'))
   const { state, ready, buy, mint, report } = useCards()
   const you = youOf(state)
   const [query, setQuery] = React.useState('')
@@ -61,6 +66,13 @@ export function CardsMarket() {
       return (a.card.featuredRank ?? 99) - (b.card.featuredRank ?? 99)
     })
   }, [query, sort, state])
+
+  React.useEffect(() => {
+    if (!rarityFocus) return
+    document
+      .getElementById(`desk-${rarityFocus}`)
+      ?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }, [rarityFocus])
 
   const byRarity = React.useMemo(() => {
     const groups = {} as Record<CardRarity, ListingRow[]>
@@ -128,7 +140,10 @@ export function CardsMarket() {
                   <section
                     key={rarity}
                     data-rarity={rarity}
-                    className="vdoc-card-book border-white/8 px-4 py-5 md:border-r md:last:border-r-0"
+                    className={cn(
+                      'vdoc-card-book border-white/8 px-4 py-5 md:border-r md:last:border-r-0',
+                      rarityFocus === rarity && 'ring-1 ring-inset ring-white/20'
+                    )}
                     aria-labelledby={`desk-${rarity}`}
                   >
                     <div className="flex items-end justify-between gap-3">

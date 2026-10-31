@@ -3,7 +3,7 @@
 import * as React from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { PanelLeft, X, LayoutDashboard } from 'lucide-react'
+import { PanelLeft, X, LayoutDashboard, ChevronRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { BrandLogo } from '@/components/brand/logo'
 import { LogoAwaken } from '@/components/os/logo-awaken'
@@ -24,6 +24,9 @@ export function HomeChrome() {
   const [mobileOpen, setMobileOpen] = React.useState(false)
   const [predicted, setPredicted] = React.useState<string[]>([])
   const [awaken, setAwaken] = React.useState(false)
+  const [openMenus, setOpenMenus] = React.useState<Record<string, boolean>>({
+    leaderboard: true,
+  })
 
   React.useEffect(() => {
     setPredicted(predictNext(2))
@@ -98,54 +101,99 @@ export function HomeChrome() {
 
   const ctx = { pathname, category: activeCategory, hash, rarity: activeRarity }
 
-  const renderLink = (item: RailItem) => {
+  React.useEffect(() => {
+    if (pathname === '/cards' || pathname.startsWith('/cards/')) {
+      setOpenMenus((current) => ({ ...current, leaderboard: true }))
+    }
+  }, [pathname])
+
+  const renderLink = (item: RailItem, nested = false) => {
     const isActive = item.match?.(ctx) ?? false
     const Icon = item.icon
     const isPredicted = predicted.includes(item.id)
+    const hasChildren = Boolean(item.children?.length)
+    const childActive = item.children?.some((child) => child.match?.(ctx)) ?? false
+    const expanded = openMenus[item.id] ?? childActive
+
     return (
       <li key={item.id}>
-        <Link
-          href={item.href}
-          onClick={() => visit(item.id)}
-          aria-current={isActive ? 'page' : undefined}
-          className={cn(
-            'group flex items-center gap-2.5 rounded-lg px-3 py-2 text-sm outline-none',
-            'transition-colors duration-150',
-            isActive
-              ? 'bg-white/[0.08] font-medium text-foreground'
-              : 'text-white/55 hover:bg-white/[0.05] hover:text-white/90',
-            isPredicted && !isActive && 'text-white/70'
-          )}
-        >
-          <span className="relative shrink-0">
-            <Icon
-              className={cn(
-                'size-[1.125rem]',
-                isActive ? 'text-foreground' : 'text-white/45 group-hover:text-white/70'
-              )}
-              aria-hidden
-            />
-            {item.pulse && (
-              <span
-                className="absolute -right-0.5 -top-0.5 size-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)]"
+        <div className="flex items-center gap-0.5">
+          <Link
+            href={item.href}
+            onClick={() => visit(item.id)}
+            aria-current={isActive ? 'page' : undefined}
+            className={cn(
+              'group flex min-w-0 flex-1 items-center gap-2.5 rounded-lg px-3 py-2 text-sm outline-none',
+              'transition-colors duration-150',
+              nested && 'pl-8',
+              isActive
+                ? 'bg-white/[0.08] font-medium text-foreground'
+                : 'text-white/55 hover:bg-white/[0.05] hover:text-white/90',
+              isPredicted && !isActive && 'text-white/70'
+            )}
+          >
+            <span className="relative shrink-0">
+              <Icon
+                className={cn(
+                  'size-[1.125rem]',
+                  isActive ? 'text-foreground' : 'text-white/45 group-hover:text-white/70'
+                )}
                 aria-hidden
               />
+              {item.pulse && (
+                <span
+                  className="absolute -right-0.5 -top-0.5 size-1.5 rounded-full bg-emerald-400 shadow-[0_0_6px_rgba(52,211,153,0.8)]"
+                  aria-hidden
+                />
+              )}
+            </span>
+            <span className="min-w-0 flex-1 truncate">{item.label}</span>
+            {item.badge && (
+              <span
+                className={cn(
+                  'shrink-0 rounded px-1.5 py-0.5 text-[9px] font-medium tracking-wide',
+                  isActive
+                    ? 'bg-white/15 text-white/80'
+                    : 'bg-white/[0.06] text-white/40 group-hover:text-white/60'
+                )}
+              >
+                {item.badge}
+              </span>
             )}
-          </span>
-          <span className="min-w-0 flex-1 truncate">{item.label}</span>
-          {item.badge && (
-            <span
+          </Link>
+          {hasChildren ? (
+            <button
+              type="button"
+              aria-expanded={expanded}
+              aria-controls={`rail-${item.id}-children`}
+              aria-label={expanded ? `Hide ${item.label}` : `Show ${item.label}`}
+              onClick={() =>
+                setOpenMenus((current) => ({
+                  ...current,
+                  [item.id]: !expanded,
+                }))
+              }
               className={cn(
-                'shrink-0 rounded px-1.5 py-0.5 text-[9px] font-medium tracking-wide',
-                isActive
-                  ? 'bg-white/15 text-white/80'
-                  : 'bg-white/[0.06] text-white/40 group-hover:text-white/60'
+                'inline-flex size-8 shrink-0 items-center justify-center rounded-lg text-white/40',
+                'transition-colors hover:bg-white/[0.06] hover:text-white/80',
+                (expanded || childActive) && 'text-white/70'
               )}
             >
-              {item.badge}
-            </span>
-          )}
-        </Link>
+              <ChevronRight
+                className={cn(
+                  'size-4 transition-transform duration-200',
+                  expanded && 'rotate-90'
+                )}
+                aria-hidden
+              />
+            </button>
+          ) : null}
+        </div>
+        {hasChildren && expanded ? (
+          <ul id={`rail-${item.id}-children`} className="mt-0.5 space-y-0.5">
+            {item.children?.map((child) => renderLink(child, true))}
+          </ul>
+        ) : null}
       </li>
     )
   }
