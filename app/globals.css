@@ -2573,3 +2573,150 @@
 @media (prefers-reduced-motion: reduce) {
   .playverse-drift { animation: none; }
 }
+
+/* Cards floor — rarity identity */
+.vdoc-nft-floor[data-nft-floor='legendary'] {
+  --nft-wash: oklch(0.8 0.16 75 / 0.16);
+}
+.vdoc-nft-floor[data-nft-floor='epic'] {
+  --nft-wash: oklch(0.62 0.2 295 / 0.18);
+}
+.vdoc-nft-floor[data-nft-floor='rare'] {
+  --nft-wash: oklch(0.72 0.12 220 / 0.16);
+}
+.vdoc-nft-floor {
+  position: relative;
+}
+.vdoc-nft-floor::before {
+  content: '';
+  pointer-events: none;
+  position: absolute;
+  inset: 0 0 auto;
+  height: 22rem;
+  background: radial-gradient(ellipse at 20% 0%, var(--nft-wash, transparent), transparent 60%);
+}
+
+.vdoc-nft-card {
+  position: relative;
+  overflow: hidden;
+  min-height: 17.5rem;
+  border-radius: 1.15rem;
+  padding: 1.15rem 1.15rem 1.05rem;
+  border: 1px solid oklch(0.96 0.008 280 / 0.14);
+  background:
+    linear-gradient(160deg, oklch(0.18 0.04 var(--nft-hue, 220) / 0.55), oklch(0.08 0.02 280 / 0.92)),
+    oklch(0.1 0.02 280 / 0.9);
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.08),
+    0 18px 40px oklch(0 0 0 / 0.45);
+  transform-style: preserve-3d;
+}
+.vdoc-nft-card-sm { min-height: 13rem; padding: 0.9rem; }
+.vdoc-nft-card-lg { min-height: 22rem; }
+.vdoc-nft-sheen,
+.vdoc-nft-foil {
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+}
+.vdoc-nft-sheen {
+  background: linear-gradient(
+    115deg,
+    transparent 20%,
+    oklch(1 0 0 / 0.2) 45%,
+    transparent 62%
+  );
+  mix-blend-mode: screen;
+  opacity: 0.35;
+  animation: vdoc-nft-sheen 5.5s var(--ease-standard) infinite;
+}
+.vdoc-nft-foil {
+  background:
+    radial-gradient(circle at 80% 18%, oklch(1 0 0 / 0.16), transparent 36%),
+    repeating-linear-gradient(
+      125deg,
+      oklch(1 0 0 / 0.05) 0 2px,
+      transparent 2px 7px
+    );
+  opacity: 0.45;
+}
+.vdoc-nft-card[data-rarity='legendary'] {
+  border-color: oklch(0.86 0.16 75 / 0.55);
+  box-shadow:
+    inset 0 1px 0 oklch(0.95 0.08 85 / 0.35),
+    0 18px 48px oklch(0.75 0.14 75 / 0.22),
+    0 0 36px oklch(0.8 0.16 75 / 0.18);
+}
+.vdoc-nft-card[data-rarity='epic'] {
+  border-color: oklch(0.72 0.2 295 / 0.5);
+  box-shadow:
+    inset 0 1px 0 oklch(0.78 0.12 280 / 0.28),
+    0 18px 48px oklch(0.55 0.2 280 / 0.24),
+    0 0 32px oklch(0.62 0.18 255 / 0.2);
+}
+.vdoc-nft-card[data-rarity='rare'] {
+  border-color: oklch(0.78 0.12 220 / 0.42);
+  box-shadow:
+    inset 0 1px 0 oklch(0.86 0.08 210 / 0.22),
+    0 16px 36px oklch(0.7 0.1 220 / 0.16);
+}
+.vdoc-nft-series {
+  position: relative;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: oklch(0.92 0.02 280 / 0.55);
+}
+.vdoc-nft-title {
+  position: relative;
+  margin-top: 2.4rem;
+  font-family: var(--font-syne), sans-serif;
+  font-size: 1.25rem;
+  line-height: 1.15;
+  color: var(--lunar);
+}
+.vdoc-nft-ability {
+  position: relative;
+  margin-top: 0.55rem;
+  max-width: 16rem;
+  font-size: 12px;
+  line-height: 1.45;
+  color: oklch(0.86 0.02 280 / 0.7);
+}
+.vdoc-nft-meta {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-top: 1.4rem;
+  font-size: 11px;
+  color: oklch(0.86 0.02 280 / 0.62);
+}
+.vdoc-nft-rarity {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+.vdoc-nft-evolve {
+  position: relative;
+  margin-top: 0.45rem;
+  font-size: 11px;
+  color: var(--cyan);
+}
+.vdoc-nft-spin {
+  animation: vdoc-nft-spin 7s linear infinite;
+}
+@keyframes vdoc-nft-sheen {
+  0% { transform: translateX(-30%); opacity: 0.15; }
+  50% { opacity: 0.45; }
+  100% { transform: translateX(30%); opacity: 0.15; }
+}
+@keyframes vdoc-nft-spin {
+  from { transform: perspective(900px) rotateY(0deg); }
+  to { transform: perspective(900px) rotateY(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vdoc-nft-sheen,
+  .vdoc-nft-spin {
+    animation: none !important;
+  }
+}

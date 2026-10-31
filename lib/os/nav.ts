@@ -5,6 +5,9 @@ import {
   BookOpen,
   BookMarked,
   BookText,
+  Crown,
+  Hexagon,
+  Award,
   Globe,
   Zap,
   Sparkles,
@@ -38,6 +41,7 @@ export type RailItem = {
     pathname: string
     category: UniverseCategory | null
     hash: string
+    rarity: string | null
   }) => boolean
 }
 
@@ -246,6 +250,41 @@ export const entertainmentNavGroups: RailGroup[] = [
         hue: 25,
         match: ({ pathname, hash }) =>
           pathname === '/' && hash === 'quick-entertainment',
+      },
+    ],
+  },
+  {
+    id: 'cards',
+    label: 'Cards',
+    items: [
+      {
+        id: 'legendary',
+        icon: Crown,
+        label: 'Legendary',
+        href: '/cards?r=legendary',
+        hue: 48,
+        badge: 'ULTRA',
+        pulse: true,
+        match: ({ pathname, rarity }) =>
+          pathname === '/cards' && rarity === 'legendary',
+      },
+      {
+        id: 'epic',
+        icon: Hexagon,
+        label: 'Epic',
+        href: '/cards?r=epic',
+        hue: 280,
+        badge: 'HIGH',
+        match: ({ pathname, rarity }) => pathname === '/cards' && rarity === 'epic',
+      },
+      {
+        id: 'rare',
+        icon: Award,
+        label: 'Rare',
+        href: '/cards?r=rare',
+        hue: 200,
+        badge: 'LIMITED',
+        match: ({ pathname, rarity }) => pathname === '/cards' && rarity === 'rare',
       },
     ],
   },

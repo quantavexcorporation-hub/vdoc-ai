@@ -89,6 +89,24 @@ export const INTENT_ACTIONS: IntentAction[] = [
     keywords: ['upgrade', 'plus', 'plan', 'pro', 'premiere', 'subscribe', 'pay', 'premium'],
   },
   {
+    id: 'cards',
+    label: 'Open collectible cards',
+    hint: 'Legendary · Epic · Rare floor',
+    href: '/cards',
+    keywords: [
+      'card',
+      'cards',
+      'nft',
+      'collectible',
+      'legendary',
+      'epic',
+      'rare',
+      'mint',
+      'trade',
+      'holo',
+    ],
+  },
+  {
     id: 'economy',
     label: 'Open my digital vault',
     hint: 'Virtual Universe · ownership vault',
@@ -143,4 +161,7 @@ export const CATEGORY_MOOD: Record<string, string> = {
   live: 'signal',
   community: 'social',
   converse: 'intelligence',
+  legendary: 'cinema',
+  epic: 'cosmic',
+  rare: 'neon',
 }

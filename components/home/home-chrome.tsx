@@ -18,6 +18,7 @@ export function HomeChrome() {
   const router = useRouter()
   const searchParams = useSearchParams()
   const activeCategory = searchParams.get('c') as UniverseCategory | null
+  const activeRarity = searchParams.get('r')
   const [hash, setHash] = React.useState('')
 
   const [mobileOpen, setMobileOpen] = React.useState(false)
@@ -95,7 +96,7 @@ export function HomeChrome() {
     return () => window.removeEventListener('keydown', onKey)
   }, [mobileOpen])
 
-  const ctx = { pathname, category: activeCategory, hash }
+  const ctx = { pathname, category: activeCategory, hash, rarity: activeRarity }
 
   const renderLink = (item: RailItem) => {
     const isActive = item.match?.(ctx) ?? false
